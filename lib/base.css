@@ -38,7 +38,7 @@
         to bottom right,
         #FF6C87, #FC7246
     );
-    --fondo: #f5f5f5
+    --fondo: #f5f5f5;
     /* TAMAÑOS */
     --small: 18px;
     --medium: 24px;
@@ -46,5 +46,5 @@
 }
 
 body {
-    background-color: var(--fondo);
+    background: var(--fondo);
 }
