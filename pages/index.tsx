@@ -18,8 +18,8 @@ export default function HomePage() {
             <img className={styles["img"]} src="termo-stanley.png" alt="" />
           </div>
           <div className={styles["info"]}>
-            <Body size="m" color="white">Termo Stanley</Body>
-            <Body size="m" color="white">$15.000</Body>
+            <Body className={styles["title"]} size="m" color="white">Termo Stanley</Body>
+            <Body className={styles["price"]} size="m" color="white">$15.000</Body>
           </div>
         </div>
         <div className={styles["card"]}>
@@ -27,8 +27,8 @@ export default function HomePage() {
             <img className={styles["img"]} src="termo-stanley.png" alt="" />
           </div>
           <div className={styles["info"]}>
-            <Body size="m" color="white">Termo Stanley</Body>
-            <Body size="m" color="white">$15.000</Body>
+            <Body className={styles["title"]} size="m" color="white">Termo Stanley</Body>
+            <Body className={styles["price"]} size="m" color="white">$15.000</Body>
           </div>
         </div>
       </div>
