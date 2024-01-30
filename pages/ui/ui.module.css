@@ -1,0 +1,19 @@
+.ui-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.display {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: fit-content;
+    background: var(--grey-flat);
+    padding: 10px;
+    border-radius: 20px;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}

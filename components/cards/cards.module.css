@@ -1,0 +1,35 @@
+.card {
+    margin: 20px;
+    background: var(--white);
+    display: flex;
+    height: fit-content;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: -10px -10px 30px 0px rgba(255, 255, 255, 0.9), 10px 10px 30px 0px rgba(44, 45, 46, 0.3);
+}
+.img-container {
+    width: 220px;
+    height: 220px;
+    background: none;
+    overflow: hidden;
+}
+.img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px 5px 0 0;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0px 0 5px 5px;
+    padding: 30px;
+    font-size: 24px;
+}
+.product__name {
+    margin: 0;
+    color: var(--black);
+}
+.product__price {
+    margin: 0;
+    color: var(--black);
+}
