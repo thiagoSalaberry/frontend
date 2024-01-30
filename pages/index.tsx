@@ -1,6 +1,8 @@
 import { StyledInput } from "@/ui/textfields";
 import { Button } from "@/ui/buttons";
 import { Body } from "@/ui/text";
+import Card from "@/components/cards";
+import SegundaCard from "@/components/segundaCard";
 import { LayoutComp } from "@/components/layout"
 import styles from "./home.module.css";
 export default function HomePage() {
@@ -31,6 +33,8 @@ export default function HomePage() {
             <Body className={styles["price"]} size="m" color="white">$15.000</Body>
           </div>
         </div>
+        <Card title="Termo Stanley" price={15000} imgUrl="termo-stanley.png" desc=""/>
+        <SegundaCard title="Termo Stanley" price={15000} imgUrl="termo-stanley.png" desc=""/>
       </div>
     </LayoutComp>
   )
