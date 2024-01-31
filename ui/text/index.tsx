@@ -3,7 +3,7 @@ import styled from "styled-components";
 interface TextProps {
     fontWeight?: "bold" | "normal";
     size?: "s" | "m" | "l";
-    textAlign?: "l" | "c" | "r"
+    textalign?: "l" | "c" | "r"
   }
 
 export const Title = styled.h1`
@@ -39,7 +39,7 @@ export const Body = styled.label<TextProps>`
       }
     }};
     text-align: ${(props) => {
-    switch (props.textAlign) {
+    switch (props.textalign) {
       case "l":
         return "left";
       case "c":

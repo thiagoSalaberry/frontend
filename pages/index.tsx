@@ -15,29 +15,8 @@ export default function HomePage() {
       </div>
       <div className={styles["destacados"]}>
         <h2>PRODUCTOS DESTACADOS</h2>
-        {/* <div className={styles["card"]}>
-          <div className={styles["img-container"]}>
-            <img className={styles["img"]} src="termo-stanley.png" alt="" />
-          </div>
-          <div className={styles["info"]}>
-            <Body className={styles["title"]} size="m" color="white">Termo Stanley</Body>
-            <Body className={styles["price"]} size="m" color="white">$15.000</Body>
-          </div>
-        </div>
-        <div className={styles["card"]}>
-          <div className={styles["img-container"]}>
-            <img className={styles["img"]} src="termo-stanley.png" alt="" />
-          </div>
-          <div className={styles["info"]}>
-            <Body className={styles["title"]} size="m" color="white">Termo Stanley</Body>
-            <Body className={styles["price"]} size="m" color="white">$15.000</Body>
-          </div>
-        </div> */}
-        <Card title="Termo Stanley" price={15000} imgUrl="termo-stanley.png" desc=""/>
-        <Card title="Termo Stanley" price={15000} imgUrl="termo-stanley.png" desc=""/>
-        <Card title="Termo Stanley" price={15000} imgUrl="termo-stanley.png" desc=""/>
-        <Card title="Termo Stanley" price={15000} imgUrl="termo-stanley.png" desc=""/>
-        {/* <SegundaCard title="Termo Stanley" price={15000} imgUrl="termo-stanley.png" desc=""/> */}
+        <Card title="Termo Stanley" price={15000} imgUrl="termo-stanley.png" desc="" rating={4.5} reviews={1589}/>
+        <Card title="Termo Stanley" price={9500} imgUrl="termo-stanley.png" desc="" rating={3.1} reviews={589}/>
       </div>
     </LayoutComp>
   )
