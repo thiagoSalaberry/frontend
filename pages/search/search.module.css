@@ -1,0 +1,22 @@
+.search, .form, .input-container, .results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 95%;
+}
+.results {
+    gap: 20px;
+    text-align: left;
+    width: 100%;
+}
+.input-container {
+    gap: 5px;
+    width: 100%;
+}
+.form {
+    width: 100%;
+    gap: 20px;
+    align-items: center;
+}
