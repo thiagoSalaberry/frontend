@@ -16,7 +16,7 @@ export default function HomePage() {
       <div className={styles["destacados"]}>
         <h2>PRODUCTOS DESTACADOS</h2>
         <Card title="Termo Stanley" price={15000} imgUrl="termo-stanley.png" desc="" rating={4.5} reviews={1589}/>
-        <Card title="Termo Stanley" price={9500} imgUrl="termo-stanley.png" desc="" rating={3.1} reviews={589}/>
+        <Card title="Zapatillas de running Nike" price={130000} imgUrl="shoes.png" desc="" rating={3.9} reviews={589}/>
       </div>
     </LayoutComp>
   )

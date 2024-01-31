@@ -1,5 +1,7 @@
 import Link from "next/link";
 import {Label, Body} from "@/ui/text";
+import { TwitterXIcon } from "@/ui/icons/twitter-x";
+import { InstragramIcon } from "@/ui/icons/instagram";
 import styles from "./footer.module.css";
 export function FooterComp() {
     return (
@@ -21,10 +23,10 @@ export function FooterComp() {
             <div className={styles["redes"]}>
                 <Label color="white" size="m">Redes</Label>
                 <Link className={styles["link"]} href={"https://www.instagram.com/thiagosalaberry/"}>
-                    <Body color="white" size="m">@thiagosalaberry</Body>
+                    <Body color="white" size="m"><InstragramIcon size="24"/> @thiagosalaberry</Body>
                 </Link>
                 <Link className={styles["link"]} href={"https://twitter.com/ThiagoSalaberry"}>
-                    <Body color="white" size="m">@thiagosalaberry</Body>
+                    <Body color="white" size="m"><TwitterXIcon size="24"/> @thiagosalaberry</Body>
                 </Link>
             </div>
             <Body color="white" size="m">© 2024 Teoxys</Body>
