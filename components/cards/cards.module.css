@@ -6,10 +6,10 @@
     box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.9), 5px 5px 10px 0px rgba(44, 45, 46, 0.15);
 }
 .img-container {
-    min-width: 200px;
-    min-height: 200px;
-    max-width: 200px;
-    max-height: 200px;
+    min-width: 180px;
+    min-height: 180px;
+    max-width: 180px;
+    max-height: 180px;
     /* background: greenyellow; */
     overflow: hidden;
     border-radius: 10px 0 0 10px;

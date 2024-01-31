@@ -7,7 +7,7 @@ import { StarFillIcon } from "@/ui/icons/star-fill";
 import { LikeIcon } from "@/ui/icons/like";
 interface CardProps {
     title:string;
-    desc:string;
+    desc?:string;
     price:number;
     imgUrl:string;
 }
@@ -18,9 +18,8 @@ export default function Card(props:CardProps) {
                 <img className={styles["img"]} src={props.imgUrl} alt="product.jpg" />
             </div>
             <div className={styles["info"]}>
-                <Body fontWeight="bold" size="m" textAlign="l" className={styles["product__title"]}>{props.title}</Body>
-                <Body className={styles["product__desc"]} size="s">{props.desc}</Body>
-                <Body className={styles["product__price"]} size="l" fontWeight="bold">${props.price.toLocaleString()}</Body>
+                <Body fontWeight="bold" size="s" textAlign="l" className={styles["product__title"]}>{props.title}</Body>
+                <Body className={styles["product__price"]} size="m" fontWeight="bold">${props.price.toLocaleString()}</Body>
                 <div className={styles["rate"]}>
                     <div className={styles["stars"]}>
                         <StarFillIcon size="14" />
