@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 interface TextProps {
     fontWeight?: "bold" | "normal";
-    size?: "s" | "m" | "l"
+    size?: "s" | "m" | "l";
+    textAlign?: "l" | "c" | "r"
   }
 
 export const Title = styled.h1`
@@ -35,6 +36,18 @@ export const Body = styled.label<TextProps>`
         return "30px";
       default:
         return "18px";
-    }
-  }};
+      }
+    }};
+    text-align: ${(props) => {
+    switch (props.textAlign) {
+      case "l":
+        return "left";
+      case "c":
+        return "center";
+      case "r":
+        return "right";
+      default:
+        return "center";
+      }
+    }};
 `

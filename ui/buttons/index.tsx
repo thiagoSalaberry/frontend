@@ -25,3 +25,8 @@ export const BackButton = styled(Button)`
         box-shadow: 2px 2px 7px 0px rgba(44, 45, 46, 0.5) inset, -1px -1px 3px 1px rgba(255, 255, 255, .9) inset;
     }
 `
+
+export const IconButtons = styled(Button)`
+    font-size: 0;
+    padding: 10px;
+`
