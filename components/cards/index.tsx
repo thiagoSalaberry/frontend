@@ -19,7 +19,7 @@ export default function Card(props:CardProps) {
                 <img className={styles["img"]} src={props.imgUrl} alt="product.jpg" />
             </div>
             <div className={styles["info"]}>
-                <Body fontWeight="bold" size="s" className={styles["product__title"]}>{props.title}</Body>
+                <Body fontWeight="bold" size="s" className={styles["product__title"]} talign="left">{props.title}</Body>
                 <Body className={styles["product__price"]} size="m" fontWeight="bold">${props.price.toLocaleString()}</Body>
                 <div className={styles["rate"]}>
                     <div className={styles["stars"]}>

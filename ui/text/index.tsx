@@ -3,6 +3,7 @@ import styled from "styled-components";
 interface TextProps {
     fontWeight?: "bold" | "normal";
     size?: "s" | "m" | "l";
+    talign?: "left" | "center" | "right";
   }
 
 export const Title = styled.h1`
@@ -25,6 +26,7 @@ export const Body = styled.label<TextProps>`
     font-weight: ${props => props.fontWeight || "normal"};
     color: ${props => props.color || "#000"};
     margin: 0;
+    text-align: ${props => props.talign};
     font-size: ${(props) => {
     switch (props.size) {
       case "s":
