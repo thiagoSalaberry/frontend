@@ -5,9 +5,10 @@ import Card from "@/components/cards"
 import BigCard from "@/components/big-card"
 import { Input, SecondInput } from "@/ui/textfields"
 import styles from "./item.module.css";
-import { useProduct } from "@/lib/hooks";
+import { useMe, useProduct } from "@/lib/hooks";
 import { useParams } from "next/navigation"
 export default function HomePage() {
+  const user = useMe()
   const params = useParams();
   const product = useProduct(String(params?.productId));
   console.log(product)
@@ -15,7 +16,7 @@ export default function HomePage() {
     e.preventDefault();
   };
   return (
-    <LayoutComp>
+    <LayoutComp user={user ? user : false}>
       <div className={styles["item"]}>
         <form onSubmit={handleForm} id="email-form" className={styles["form"]}>
           <div className={styles["input-container"]}>

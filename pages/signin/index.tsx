@@ -6,7 +6,9 @@ import styles from "./signin.module.css";
 import Router from "next/router";
 import { sendCode, getToken } from "@/lib/api-calls";
 import { useState } from "react";
+import { useMe } from "@/lib/hooks";
 export default function HomePage() {
+    const user = useMe();
     const [email, setEmail] = useState("");
     const [code, setCode] = useState("");
     async function getCode(e:any) {
@@ -49,7 +51,7 @@ export default function HomePage() {
         </form>
     );
   return (
-    <LayoutComp>
+    <LayoutComp user={user ? user : false}>
         <div className={styles["signin"]}>
             <Title>Ingresar</Title>
             {formContent}
