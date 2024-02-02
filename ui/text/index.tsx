@@ -8,7 +8,7 @@ interface TextProps {
 
 export const Title = styled.h1`
     font-weight: 200;
-    font-size: 64px;
+    font-size: 48px;
     margin: 0;
     `
 export const Subtitle = styled.h2`
@@ -32,11 +32,11 @@ export const Body = styled.label<TextProps>`
       case "s":
         return "14px";
       case "m":
-        return "24px";
-      case "l":
-        return "30px";
-      default:
         return "18px";
+      case "l":
+        return "24px";
+      default:
+        return "14px";
       }
     }};
 `

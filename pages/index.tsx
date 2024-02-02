@@ -24,13 +24,15 @@ export default function HomePage() {
       </div>
       <div className={styles["destacados"]}>
         <Subtitle>PRODUCTOS DESTACADOS</Subtitle>
-        {featuredProducts?.map(prod => {
-          return (
-            <Link className={styles["link"]} key={prod.productId} href={`/item/${prod.productId}`}>
-              <Card title={prod.title} price={prod.unit_price} imgUrl={prod.images} stock={prod.stock} desc={prod.description} rating={prod.rating} reviews={prod.reviews}/>
-            </Link>
-          )
-        })}
+        <div className={styles["cards-container"]}>
+          {featuredProducts?.map(prod => {
+            return (
+              <Link className={styles["link"]} key={prod.productId} href={`/item/${prod.productId}`}>
+                <Card title={prod.title} price={prod.unit_price} imgUrl={prod.images} stock={prod.stock} desc={prod.description} rating={prod.rating} reviews={prod.reviews}/>
+              </Link>
+            )
+          })}
+        </div>
       </div>
     </LayoutComp>
   )

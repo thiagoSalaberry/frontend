@@ -1,5 +1,6 @@
 .card {
     background: var(--fondo);
+    background: rgb(213, 165, 165);
     display: flex;
     width: 100%;
     border-radius: 10px;
@@ -19,8 +20,9 @@
     height: auto;
     object-fit: contain;
     border-radius: 5px 0px 5px 0px;
+    display: none;
 }
-.info {
+/* .info {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -29,8 +31,8 @@
     border-radius: 0px 0 5px 5px;
     padding: 15px;
     font-size: 24px;
-}
-.product__name {
+} */
+/* .product__name {
     margin: 0;
     color: var(--black);
 }
@@ -45,10 +47,10 @@
 }
 .stars {
     display: flex;
-    gap: 5px;
+    gap: 2px;
     flex-direction: row;
 }
 .buttons-container {
     display: flex;
     align-self: flex-end;
-}
+} */

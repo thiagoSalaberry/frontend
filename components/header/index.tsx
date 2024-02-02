@@ -34,7 +34,11 @@ export function HeaderComp() {
     return (
         <header className={styles["header"]}>
             <Link href={"/"}>
-                <img src="logo.png" alt="logo.png" />
+                <div className={styles["logo"]}>
+                    <div className={styles["logo-h"]}></div>
+                    <div className={styles["logo-v"]}></div>
+                    <div className={styles["logo-h"]}></div>
+                </div>
             </Link>
             <div className={styles["buttons-container"]}>
                 <button className={styles["cart"]}><CartIcon size="32"/></button>

@@ -13,17 +13,21 @@ interface InputProps {
 export const StyledInput = styled.input<InputProps>`
     background: var(--fondo);
     border: none;
-    box-shadow: -1px -1px 3px 1px rgba(255, 255, 255, .9), 2px 2px 7px 0px rgba(44, 45, 46, 0.5);
+    box-shadow: -5px -5px 10px 0px rgba(255,255,255,1), 5px 5px 10px 0px rgba(0, 0, 0, 0.15);
     border-radius: 100px;
-    padding: 10px 20px;
+    padding: 13px 20px;
     width: 100%;
-    font-size: 18px;
+    font-size: 14px;
     text-align: ${props => props.talign};
     font-weight: 500;
     color: var(--black);
     &:focus {
         outline: none;
-        box-shadow: -1px -1px 3px 1px rgba(255, 255, 255, .9), 4px 4px 7px 0px rgba(44, 45, 46, 0.5);
+        box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 1) inset, 3px 3px 10px 0px rgba(0,0,0,.15) inset;
+    }
+    &::placeholder {
+        /* Chrome, Firefox, Edge, Safari 10.1+ */
+        color: #a7a7a7;
     }
 `
 export function Input(props:InputProps) {
