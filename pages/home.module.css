@@ -9,7 +9,6 @@
 }
 .destacados {
     width: 100%;
-    gap: 20px;
     padding: 5px;
     text-align: center;
 }
@@ -17,6 +16,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 .link {
     text-decoration: none;

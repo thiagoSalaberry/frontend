@@ -13,7 +13,7 @@ export const Title = styled.h1`
     `
 export const Subtitle = styled.h2`
     font-weight: 200;
-    font-size: 44px;
+    font-size: 36px;
     margin: 0;
 `
 export const Label = styled.label<TextProps>`

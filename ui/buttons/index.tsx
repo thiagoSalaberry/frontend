@@ -28,5 +28,6 @@ export const BackButton = styled(Button)`
 
 export const IconButtons = styled(Button)`
     font-size: 0;
-    padding: 10px;
+    padding: 7px;
+    width: auto;
 `

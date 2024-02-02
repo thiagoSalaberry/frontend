@@ -28,6 +28,7 @@ export default function Card(props:CardProps) {
                         {stars}
                     </div>
                     <Body color="grey">({props.reviews})</Body>
+                    <IconButtons onClick={()=>console.log("Boton de fav")}><LikeIcon size="14"/></IconButtons>
                 </div>
             </div>
         </div>
