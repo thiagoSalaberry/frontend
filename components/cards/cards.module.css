@@ -3,24 +3,22 @@
     display: flex;
     width: 100%;
     border-radius: 10px;
+    height: 144px;
     box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.9), 5px 5px 10px 0px rgba(44, 45, 46, 0.15);
 }
 .img-container {
-    min-width: 180px;
-    min-height: 180px;
-    max-width: 180px;
-    max-height: 180px;
-    /* background: greenyellow; */
+    min-width: 144px;
+    min-height: 144px;
+    max-width: 144px;
+    max-height: 144px;
     overflow: hidden;
     border-radius: 10px 0 0 10px;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
 }
 .img {
     width: 100%;
     height: auto;
-    border-radius: 5px 5px 0 0;
+    object-fit: contain;
+    border-radius: 5px 0px 5px 0px;
 }
 .info {
     display: flex;

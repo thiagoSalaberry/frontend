@@ -21,16 +21,13 @@ export default function Card(props:CardProps) {
             </div>
             <div className={styles["info"]}>
                 <Body fontWeight="bold" size="s" className={styles["product__title"]} talign="left">{props.title}</Body>
-                <Body className={styles["product__price"]} size="m" fontWeight="bold">${props.price.toLocaleString()}</Body>
+                <Body className={styles["product__price"]} size="s" fontWeight="bold">${props.price.toLocaleString()}</Body>
                 <div className={styles["rate"]}>
                     <Body color="grey">{props.rating}</Body>
                     <div className={styles["stars"]}>
                         {stars}
                     </div>
                     <Body color="grey">({props.reviews})</Body>
-                </div>
-                <div className={styles["buttons-container"]}>
-                    <IconButtons><LikeIcon size="20"/></IconButtons>
                 </div>
             </div>
         </div>

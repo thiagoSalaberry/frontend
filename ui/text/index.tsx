@@ -30,7 +30,7 @@ export const Body = styled.label<TextProps>`
     font-size: ${(props) => {
     switch (props.size) {
       case "s":
-        return "18px";
+        return "14px";
       case "m":
         return "24px";
       case "l":
