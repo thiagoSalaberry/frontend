@@ -10,7 +10,7 @@
 }
 
 .logo {
-    font-size: 32px;
+    height: 100%;
 }
 .buttons-container {
     display: flex;

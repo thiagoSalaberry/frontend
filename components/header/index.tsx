@@ -3,6 +3,7 @@ import { CartIcon } from "@/ui/icons/cart";
 import { XIcon } from "@/ui/icons/x";
 import { Body } from "@/ui/text";
 import Link from "next/link";
+import logo from "@/public/logo.jpg"
 export function HeaderComp() {
     function openMenu() {
         document.getElementById("close-menu")!.classList.remove(styles["off"]);
@@ -32,7 +33,9 @@ export function HeaderComp() {
     );
     return (
         <header className={styles["header"]}>
-            <h2 className={styles["logo"]}>TEOXYS SHOP</h2>
+            <Link href={"/"}>
+                <img src="logo.png" alt="logo.png" />
+            </Link>
             <div className={styles["buttons-container"]}>
                 <button className={styles["cart"]}><CartIcon size="32"/></button>
                 <button onClick={openMenu} className={styles["hamburguer"]}>

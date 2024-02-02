@@ -7,13 +7,13 @@ interface TextProps {
   }
 
 export const Title = styled.h1`
-    font-weight: bold;
-    font-size: 2.125rem;
+    font-weight: 200;
+    font-size: 64px;
     margin: 0;
     `
 export const Subtitle = styled.h2`
-    font-weight: bold;
-    font-size: 1.875rem;
+    font-weight: 200;
+    font-size: 44px;
     margin: 0;
 `
 export const Label = styled.label<TextProps>`

@@ -7,7 +7,7 @@ export function FooterComp() {
     return (
         <footer className={styles["footer"]}>
             <div className={styles["routes"]}>
-                <Link className={styles["link"]} href={"/login"}>
+                <Link className={styles["link"]} href={"/signin"}>
                     <Body color="white" size="m">Ingresar</Body>
                 </Link>
                 <Link className={styles["link"]} href={"/profile"}>
@@ -23,10 +23,10 @@ export function FooterComp() {
             <div className={styles["redes"]}>
                 <Label color="white" size="m">Redes</Label>
                 <Link className={styles["link"]} href={"https://www.instagram.com/thiagosalaberry/"}>
-                    <Body color="white" size="m"><InstragramIcon size="24"/> @thiagosalaberry</Body>
+                    <Body className={styles["redes-link"]} color="white" size="m"><InstragramIcon size="24"/> @thiagosalaberry</Body>
                 </Link>
                 <Link className={styles["link"]} href={"https://twitter.com/ThiagoSalaberry"}>
-                    <Body color="white" size="m"><TwitterXIcon size="24"/> @thiagosalaberry</Body>
+                    <Body className={styles["redes-link"]} color="white" size="m"><TwitterXIcon size="24"/> @thiagosalaberry</Body>
                 </Link>
             </div>
             <Body color="white" size="m">© 2024 Teoxys</Body>

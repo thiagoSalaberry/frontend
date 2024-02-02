@@ -10,6 +10,7 @@ interface CardProps {
     imgUrl:string;
     rating?:number;
     reviews?:number;
+    stock?: "true" | "false"
 }
 export default function Card(props:CardProps) {
     const stars = showStars(props.rating!);
@@ -22,6 +23,7 @@ export default function Card(props:CardProps) {
                 <Body fontWeight="bold" size="s" className={styles["product__title"]} talign="left">{props.title}</Body>
                 <Body className={styles["product__price"]} size="m" fontWeight="bold">${props.price.toLocaleString()}</Body>
                 <div className={styles["rate"]}>
+                    <Body color="grey">{props.rating}</Body>
                     <div className={styles["stars"]}>
                         {stars}
                     </div>

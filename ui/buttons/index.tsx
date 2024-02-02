@@ -5,8 +5,8 @@ export const Button = styled.button`
     width: 100%;
     border: none;
     color: white;
-    font-weight: bold;
-    font-size: 18px;
+    font-weight: 400;
+    font-size: 24px;
     border-radius: 30px;
     /* box-shadow: -1px -1px 3px 1px rgba(255, 219, 101, 1), 2px 2px 7px 0px rgba(44, 45, 46, 0.5); */ //amarillo
     &:active {

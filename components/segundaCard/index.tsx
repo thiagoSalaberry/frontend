@@ -16,7 +16,6 @@ export default function SegundaCard(props:CardProps) {
             <div className={styles["info"]}>
                 <Body className={styles["product__title"]} size="s" fontWeight="bold">{props.title}</Body>
                 <Body className={styles["product__price"]} size="s" fontWeight="bold">${props.price}</Body>
-                {/* <Button>{"<3"}</Button> */}
             </div>
         </div>
     )

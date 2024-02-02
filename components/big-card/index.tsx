@@ -11,6 +11,7 @@ interface CardProps {
     imgUrl:string;
     rating?:number;
     reviews?:number;
+    stock?: "true" | "false"
 }
 export default function BigCard(props:CardProps) {
     const stars = showStars(props.rating!);
@@ -20,8 +21,8 @@ export default function BigCard(props:CardProps) {
             <div className={styles["img-container"]}>
                 <img className={styles["img"]} src={props.imgUrl} alt="product.jpg" />
             </div>
-            <Body className={styles["product__price"]} size="l" fontWeight="bold">${props.price.toLocaleString()}</Body>
-            <Body className={styles["product__stock"]} size="s" fontWeight="normal" color="grey">Stock disponible: 7</Body>
+            <Body className={styles["product__price"]} size="l" fontWeight="bold">${props?.price?.toLocaleString()}</Body>
+            <Body className={styles["product__stock"]} size="s" fontWeight="normal" color="grey">{props.stock == "true" ? "Stock disponible" : "No hay stock"}</Body>
             <div className={styles["rate"]}>
                 <div className={styles["stars"]}>
                     {stars}

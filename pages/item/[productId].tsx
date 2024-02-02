@@ -4,8 +4,13 @@ import { Button, BackButton } from "@/ui/buttons"
 import Card from "@/components/cards"
 import BigCard from "@/components/big-card"
 import { Input, SecondInput } from "@/ui/textfields"
-import styles from "./item.module.css"
+import styles from "./item.module.css";
+import { useProduct } from "@/lib/hooks";
+import { useParams } from "next/navigation"
 export default function HomePage() {
+  const params = useParams();
+  const product = useProduct(String(params?.productId));
+  console.log(product)
   function handleForm(e:any) {
     e.preventDefault();
   };
@@ -18,7 +23,7 @@ export default function HomePage() {
           </div>
           <Button>Buscar</Button>
         </form>
-        <BigCard title="Termo Stanley de 1lt" imgUrl="termo-stanley.png" price={15000} rating={3.6} reviews={1589} desc="Con este termo sabes todo el tiempo que te va a durar el agua vos que tomas mate hasta para ir al super pedazo de fantasma"/>
+        <BigCard title={product?.title} imgUrl={product?.images} price={product?.unit_price} stock={product?.stock} rating={product?.rating} reviews={product?.reviews} desc={product?.description}/>
       </div>
     </LayoutComp>
   )
