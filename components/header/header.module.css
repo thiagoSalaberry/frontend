@@ -56,7 +56,7 @@
     color: white;
     border: none;
     padding: 0;
-    /* align-self: end; */
+    align-self: end;
 }
 .list, .footer {
     display: flex;
