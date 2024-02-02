@@ -3,23 +3,42 @@ import {Label, Body} from "@/ui/text";
 import { TwitterXIcon } from "@/ui/icons/twitter-x";
 import { InstragramIcon } from "@/ui/icons/instagram";
 import styles from "./footer.module.css";
-export function FooterComp() {
+type FooterProp = {
+    user:any;
+};
+export function FooterComp(props:FooterProp) {
+    function deleteAccessToken() {
+        localStorage.removeItem("accessToken");
+    };
+    const routesContent = (props.user !== false ? 
+        <div className={styles["routes"]}>
+            <Link className={styles["link"]} href={"/profile"}>
+                <Body color="white" size="m">Mi perfil</Body>
+            </Link>
+            <Link className={styles["link"]} href={"/search"}>
+                <Body color="white" size="m">Buscar</Body>
+            </Link>
+            <Link onClick={deleteAccessToken} className={styles["link"]} href={"/"}>
+                <Body color="white" size="m">Cerrar sesión</Body>
+            </Link>
+        </div>
+        :
+        <div className={styles["routes"]}>
+            <Link className={styles["link"]} href={"/profile"}>
+                <Body color="white" size="m">Mi perfil</Body>
+            </Link>
+            <Link className={styles["link"]} href={"/search"}>
+                <Body color="white" size="m">Buscar</Body>
+            </Link>
+            <Link className={styles["link"]} href={"/signin"}>
+                <Body color="white" size="m">Ingresar</Body>
+            </Link>
+        </div>
+        
+    )
     return (
         <footer className={styles["footer"]}>
-            <div className={styles["routes"]}>
-                <Link className={styles["link"]} href={"/signin"}>
-                    <Body color="white" size="m">Ingresar</Body>
-                </Link>
-                <Link className={styles["link"]} href={"/profile"}>
-                    <Body color="white" size="m">Mi perfil</Body>
-                </Link>
-                <Link className={styles["link"]} href={"/search"}>
-                    <Body color="white" size="m">Buscar</Body>
-                </Link>
-                <Link className={styles["link"]} href={"/"}>
-                    <Body color="white" size="m">Cerrar sesión</Body>
-                </Link>
-            </div>
+            {routesContent}
             <div className={styles["redes"]}>
                 <Label color="white" size="m">Redes</Label>
                 <Link className={styles["link"]} href={"https://www.instagram.com/thiagosalaberry/"}>

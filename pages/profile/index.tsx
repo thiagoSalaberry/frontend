@@ -35,7 +35,7 @@ export default function HomePage() {
         </form>
     );
   return (
-    <LayoutComp>
+    <LayoutComp user={user ? user : false}>
         <div className={styles["profile"]}>
             <Title>Perfil</Title>
             {formContent}

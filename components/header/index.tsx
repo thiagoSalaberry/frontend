@@ -3,8 +3,11 @@ import { CartIcon } from "@/ui/icons/cart";
 import { XIcon } from "@/ui/icons/x";
 import { Body } from "@/ui/text";
 import Link from "next/link";
-import logo from "@/public/logo.jpg"
-export function HeaderComp() {
+import logo from "@/public/logo.jpg";
+type HeaderProp = {
+    user:any;
+};
+export function HeaderComp(props:HeaderProp) {
     function openMenu() {
         document.getElementById("close-menu")!.classList.remove(styles["off"]);
     };
@@ -17,9 +20,9 @@ export function HeaderComp() {
             closeMenu();
         };
     };
-    const footerContent = /*localStorage.getItem("accessToken")*/ true ? (
+    const footerContent = props.user ? (
         <div className={styles["footer"]}>
-            <Body size="s" color="white">thiagopiola99@gmail.com</Body>
+            <Body size="s" color="white">{props.user.userData.email}</Body>
             <Link onClick={deleteAccessToken} className={styles["link"]} href={"/"}>
                 <Body size="m" color="white">Cerrar sesión</Body>
             </Link>

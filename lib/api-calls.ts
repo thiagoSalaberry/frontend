@@ -50,3 +50,16 @@ export async function featuredProducts(): Promise<any[]> {
   const data = await response.json();
   return data;
 }
+export async function searchProduct(query: string) {
+  const response = await fetch(
+    `https://desafio-e-commerce-five.vercel.app/api/search?q=${query}&offset=0&limit=10`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+  );
+  const data = await response.json();
+  return data;
+}

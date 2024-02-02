@@ -1,12 +1,16 @@
 import { HeaderComp } from "../header"
 import { FooterComp } from "../footer"
 import styles from "./layout.module.css"
-export function LayoutComp({children}:any) {
+type LayoutProps = {
+    children:any;
+    user:any
+}
+export function LayoutComp(props:LayoutProps) {
     return (
         <div>
-            <HeaderComp/>
-            <main className={styles["main"]}>{children}</main>
-            <FooterComp />
+            <HeaderComp user={props.user}/>
+            <main className={styles["main"]}>{props.children}</main>
+            <FooterComp user={props.user}/>
         </div>
     )
 }

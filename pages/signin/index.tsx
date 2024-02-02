@@ -4,7 +4,7 @@ import { Button, BackButton } from "@/ui/buttons"
 import { Input, SecondInput } from "@/ui/textfields"
 import styles from "./signin.module.css";
 import Router from "next/router";
-import { sendCode, getToken } from "@/lib/sendCode";
+import { sendCode, getToken } from "@/lib/api-calls";
 import { useState } from "react";
 export default function HomePage() {
     const [email, setEmail] = useState("");

@@ -1,4 +1,4 @@
-.welcome, .destacados {
+.welcome, .destacados, .form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,6 +6,9 @@
     gap: 20px;
     width: 100%;
     padding: 20px;
+}
+.form {
+    padding: 0;
 }
 .destacados {
     width: 100%;
