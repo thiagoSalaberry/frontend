@@ -8,27 +8,19 @@ import { LayoutComp } from "@/components/layout"
 import styles from "./home.module.css";
 import { featuredProducts, searchProduct } from "@/lib/api-calls";
 import Link from "next/link";
-import Router from "next/router";
-async function getFeaturedProducts() {
-  const data = await featuredProducts();
-  return data;
-}
+import { SearcherComp } from "@/components/searcher";
 export default function HomePage() {
   const user = useMe();
   const featuredProducts = useFeaturedProducts();
-  function handleSubmit(e:any) {
-    e.preventDefault();
-    const query = e.target.query.value;
-    Router.push(`/search?q=${query}&offset=0&limit=10`)
-  }
   return (
     <LayoutComp user={user ? user : false}>
       <div className={styles["welcome"]}>
         <Title>TEOXYS SHOP</Title>
-        <form onSubmit={handleSubmit} className={styles["form"]}>
+        {/* <form onSubmit={handleSubmit} className={styles["form"]}>
           <StyledInput type="text" name="query" placeholder="Encontrá tu producto acá..."/>
           <Button>Buscar</Button>
-        </form>
+        </form> */}
+        <SearcherComp type="text" name="query" placeholder="Encontrá tu producto acá..."/>
       </div>
       <div className={styles["destacados"]}>
         <Subtitle>PRODUCTOS DESTACADOS</Subtitle>

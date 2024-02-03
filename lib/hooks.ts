@@ -21,12 +21,25 @@ export function useProduct(productId: string) {
   const { data, error } = useSWR(`/products/${productId}`, fetchAPI);
   return data as ProductProps;
 }
-export function useSearchProducts(query: string) {
+export function useSearchProducts(
+  query: string,
+  offset: string,
+  limit: string
+) {
   const { data, error } = useSWR(
-    `/search?q=${query}&offset=0&limit=10`,
+    `/search?q=${query}&offset=${offset}&limit=${limit}`,
     fetchAPI
   );
-  if (data) return data.results as Array<ProductProps>;
+  if (data)
+    return {
+      searchedProduct: data.searchedProduct,
+      results: data.results as Array<ProductProps>,
+      pagination: {
+        offset: data.pagination.offset,
+        limit: data.pagination.limit,
+        total: data.pagination.total,
+      },
+    };
 }
 export function useFeaturedProducts() {
   const { data, error } = useSWR("/products", fetchAPI);
