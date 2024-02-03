@@ -1,5 +1,5 @@
 import { LayoutComp } from "@/components/layout"
-import { Title, Body, Label } from "@/ui/text"
+import { Title, Body, Label, Subtitle } from "@/ui/text"
 import Card from "@/components/cards"
 import { useMe, useSearchProducts } from "@/lib/hooks"
 import styles from "./search.module.css";
@@ -13,10 +13,11 @@ export default function HomePage() {
   const q = params.get("q");
   const offset = params.get("offset");
   const limit = params.get("limit");
-  const foundProducts = useSearchProducts(String(q),String(offset),String(limit));
+  const foundProducts = useSearchProducts(q ? String(q): "",offset ? String(offset) : "0", limit ? String(limit) : "0");
   return (
     <LayoutComp user={user ? user : false}>
       <div className={styles["search"]}>
+        <Subtitle>BUSCADOR</Subtitle>
       <SearcherComp type="text" name="query" placeholder="Encontrá tu producto acá..."/>
         <Body size="s" color="grey">{foundProducts ? `${foundProducts?.results.length} resultados de ${foundProducts?.pagination.total}` : "Buscando..."}</Body>
         <div className={styles["cards-container"]}>

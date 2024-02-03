@@ -24,7 +24,7 @@ export function FooterComp(props:FooterProp) {
         </div>
         :
         <div className={styles["routes"]}>
-            <Link className={styles["link"]} href={"/profile"}>
+            <Link className={styles["link"]} href={"/signin"}>
                 <Body color="white" size="m">Mi perfil</Body>
             </Link>
             <Link className={styles["link"]} href={"/search"}>

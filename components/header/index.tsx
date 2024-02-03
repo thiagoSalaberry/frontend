@@ -3,6 +3,7 @@ import { CartIcon } from "@/ui/icons/cart";
 import { XIcon } from "@/ui/icons/x";
 import { Body } from "@/ui/text";
 import Link from "next/link";
+import { Button, BackButton } from "@/ui/buttons";
 import logo from "@/public/logo.jpg";
 type HeaderProp = {
     user:any;
@@ -56,7 +57,7 @@ export function HeaderComp(props:HeaderProp) {
                         <Link onClick={closeMenu} className={styles["link"]} href={"/"}>
                             <Body size={"l"} color="white">Inicio</Body>
                         </Link>
-                        <Link className={styles["link"]} href={"/profile"}>
+                        <Link className={styles["link"]} href={props.user ? "/profile" : "/signin"}>
                             <Body size={"l"} color="white">Mi perfil</Body>
                         </Link>
                         <Link className={styles["link"]} href={"/search"}>
@@ -65,6 +66,7 @@ export function HeaderComp(props:HeaderProp) {
                     </div>
                     {footerContent}
                 </div>
+                <BackButton className={styles["desktop"]}>Ingresar</BackButton>
             </div>
         </header>
     )

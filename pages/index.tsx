@@ -16,10 +16,6 @@ export default function HomePage() {
     <LayoutComp user={user ? user : false}>
       <div className={styles["welcome"]}>
         <Title>TEOXYS SHOP</Title>
-        {/* <form onSubmit={handleSubmit} className={styles["form"]}>
-          <StyledInput type="text" name="query" placeholder="Encontrá tu producto acá..."/>
-          <Button>Buscar</Button>
-        </form> */}
         <SearcherComp type="text" name="query" placeholder="Encontrá tu producto acá..."/>
       </div>
       <div className={styles["destacados"]}>
