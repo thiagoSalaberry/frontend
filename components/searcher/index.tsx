@@ -10,6 +10,7 @@ type InputProps = {
 export function SearcherComp(props:InputProps) {
     function handleSubmit(e:any) {
         e.preventDefault();
+        console.log("Click")
         const query = e.target.query.value;
         Router.push(`/search?q=${query}&offset=0&limit=10`);
       }

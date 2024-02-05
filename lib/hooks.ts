@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetchAPI, secondFetchAPI } from "./api";
+import { fetchAPI } from "./api";
 import exp from "constants";
 type ProductProps = {
   productId: string;
@@ -26,7 +26,7 @@ export function useSearchProducts(
   offset: string,
   limit: string
 ) {
-  const { data, error } = useSWR(
+  const { data, error, isLoading } = useSWR(
     `/search?q=${query}&offset=${offset}&limit=${limit}`,
     fetchAPI
   );
