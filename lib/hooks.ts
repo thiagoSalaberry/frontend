@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetchAPI } from "./api";
+import { fetchAPI, secondFetchAPI } from "./api";
 import exp from "constants";
 type ProductProps = {
   productId: string;

@@ -63,15 +63,19 @@ export async function searchProduct(query: string) {
   const data = await response.json();
   return data;
 }
-export async function updateUserData(props: object, token: string) {
+export async function updateUserData(props: object) {
+  console.log(props);
   const response = await fetch(
     `https://desafio-e-commerce-five.vercel.app/api/me`,
     {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
+      body: JSON.stringify(props),
     }
   );
+  const data = await response.json();
+  return data;
 }

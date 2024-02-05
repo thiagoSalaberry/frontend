@@ -8,20 +8,18 @@ import styles from "./item.module.css";
 import { useMe, useProduct } from "@/lib/hooks";
 import { useParams } from "next/navigation";
 import { SearcherComp } from "@/components/searcher"
-export default function HomePage() {
+export default function CheckoutPage() {
   const user = useMe()
   const params = useParams();
-  const product = useProduct(String(params?.productId));
-  console.log(product)
   function handleForm(e:any) {
     e.preventDefault();
   };
   return (
     <LayoutComp user={user ? user : false}>
-      <div className={styles["item"]}>
-        <SearcherComp type="text" name="query" placeholder="Encontrá tu producto acá..."/>
-        <BigCard title={product?.title} imgUrl={product?.images} price={product?.unit_price} stock={product?.stock} rating={product?.rating} reviews={product?.reviews} desc={product?.description}/>
-      </div>
+      {user?.userData?.address ? <Body>Enviar a {user?.userData?.address} {user?.userData?.department}</Body> : ""}
+      <Body>Enviar a otra dirección</Body>
+      <Body>Retirar en el local</Body>
+      <Button>Continuar</Button>
     </LayoutComp>
   )
 }

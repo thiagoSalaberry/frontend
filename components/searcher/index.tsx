@@ -11,7 +11,7 @@ export function SearcherComp(props:InputProps) {
     function handleSubmit(e:any) {
         e.preventDefault();
         const query = e.target.query.value;
-        Router.push(`/search?q=${query}&offset=0&limit=10`)
+        Router.push(`/search?q=${query}&offset=0&limit=10`);
       }
     return (
         <form onSubmit={handleSubmit} className={styles["form"]}>

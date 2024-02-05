@@ -4,11 +4,23 @@ import { Button, BackButton } from "@/ui/buttons"
 import { Input, SecondInput } from "@/ui/textfields"
 import { useMe } from "@/lib/hooks"
 import styles from "./profile.module.css"
-export default function HomePage() {
-    function handleForm(e:any) {
-        e.preventDefault();
-    };
+import { updateUserData } from "@/lib/api-calls"
+import Router from "next/router"
+export default function ProfilePage() {
     const user = useMe();
+    async function handleForm(e:any) {
+        e.preventDefault();
+        await updateUserData({
+            dataToUpdate: {
+                name: e.target.name.value || user?.userData?.name,
+                last_name: e.target.last_name.value || user?.userData?.last_name,
+                phone: e.target.phone.value || user?.userData?.phone,
+                address: e.target.address.value || user?.userData?.address,
+                department: e.target.department.value || user?.userData?.department
+            }
+        });
+        Router.reload();
+    };
     const formContent = (
         <form onSubmit={handleForm} id="email-form" className={styles["form"]}>
             <div className={styles["input-container"]}>
@@ -29,7 +41,7 @@ export default function HomePage() {
             </div>
             <div className={styles["input-container"]}>
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Piso y departamento</Body>
-                <Input type="text" name="floor" placeholder={user?.userData?.department ? user.userData.department : "Tu piso y departamento"}/>
+                <Input type="text" name="department" placeholder={user?.userData?.department ? user.userData.department : "Tu piso y departamento"}/>
             </div>
             <Button>Cargar datos</Button>
         </form>

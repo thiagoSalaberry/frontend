@@ -52,3 +52,49 @@ export async function fetchAPI(endpoint: string) {
     throw new Error("Error de cliente llamado por fetchAPI()");
   }
 }
+
+// export async function postApi(endpoint, body) {
+//   // Realiza una petición POST a la API y devuelve los datos en JSON
+//   let config = {
+//     method: "POST",
+//     headers: {
+//       Accept: "application/json",
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(body),
+//   };
+
+//   const response = await fetch(
+//     `https://desafio-e-commerce-five.vercel.app/api${endpoint}`,
+//     config
+//   );
+
+//   if (!response.ok) {
+//     throw new Error(`HTTP error! status: ${response.status}`);
+//   }
+
+//   const data = await response.json();
+//   return data;
+// }
+type RequestMethod = "GET" | "POST" | "PATCH";
+
+// Función que se encarga de hacer el login del usuario
+export async function secondFetchAPI(
+  endpoint: string,
+  method: RequestMethod,
+  body?: object
+) {
+  const response = await fetch(
+    `https://desafio-e-commerce-five.vercel.app/api${endpoint}`,
+    {
+      method,
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("accessToken") || ""}`,
+      },
+      body: JSON.stringify(body),
+    }
+  );
+  const data = await response.json();
+  return data;
+}

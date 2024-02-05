@@ -1,10 +1,12 @@
 import styles from "./header.module.css";
 import { CartIcon } from "@/ui/icons/cart";
+import { PersonIcon } from "@/ui/icons/person";
 import { XIcon } from "@/ui/icons/x";
 import { Body } from "@/ui/text";
 import Link from "next/link";
 import { Button, BackButton } from "@/ui/buttons";
 import logo from "@/public/logo.jpg";
+import Router from "next/router";
 type HeaderProp = {
     user:any;
 };
@@ -17,9 +19,7 @@ export function HeaderComp(props:HeaderProp) {
     };
     function deleteAccessToken() {
         localStorage.removeItem("accessToken");
-        if(location.pathname == "/") {
-            closeMenu();
-        };
+        Router.push("/");
     };
     const footerContent = props.user ? (
         <div className={styles["footer"]}>
@@ -45,6 +45,7 @@ export function HeaderComp(props:HeaderProp) {
                 </div>
             </Link>
             <div className={styles["buttons-container"]}>
+                {/* <button className={styles["person"]}><PersonIcon size="32"/></button> */}
                 <button className={styles["cart"]}><CartIcon size="32"/></button>
                 <button onClick={openMenu} className={styles["hamburguer"]}>
                     <div className={styles["bar"]}></div>
