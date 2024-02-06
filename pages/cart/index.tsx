@@ -59,7 +59,7 @@ export default function CartPage() {
                 </div>
             )}
         </div>
-        {total}
+        {switcher ? total : null}
     </LayoutComp>
   )
 }
