@@ -9,10 +9,11 @@ import { useMe, useProduct } from "@/lib/hooks";
 import { useParams } from "next/navigation";
 import Router from "next/router"
 import CartProductCard from "@/components/cart-product-card"
-import { useState } from "react"
+import { useState } from "react";
+import {ProductProps} from "@/lib/types";
 export default function CartPage() {
   const user = useMe();
-  const userCart:[] = user?.userData?.cart;
+  const userCart:ProductProps[] = user?.userData?.cart;
   console.log(userCart)
   const emptyCart = (
     <div className={styles["empty-cart"]}>
@@ -45,7 +46,7 @@ export default function CartPage() {
             <div className={styles["cart-products-container"]}>
               <Label style={{textAlign: "center"}}>Carrito de Compras</Label>
               {userCart?.map(prod => {
-                return <CartProductCard productId={prod.productId} imgUrl={prod.images} title={prod.title} price={prod.unit_price?.toLocaleString()}/>
+                return <CartProductCard productId={prod.productId} imgUrl={prod.images} title={prod.title} price={prod.unit_price}/>
               })}
             </div>
           )}
