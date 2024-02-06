@@ -9,7 +9,9 @@ import { useMe, useProduct } from "@/lib/hooks";
 import { useParams } from "next/navigation";
 import Router from "next/router"
 import CartProductCard from "@/components/cart-product-card"
+import { useState } from "react"
 export default function CartPage() {
+  const [switcher, setSwitcher] = useState(false);
   const user = useMe();
   const product1 =  useProduct("501");
   const product2 =  useProduct("301");
@@ -18,6 +20,7 @@ export default function CartPage() {
   function handleForm(e:any) {
     e.preventDefault();
   };
+  console.log({switcher})
   const emptyCart = (
     <div className={styles["empty-cart"]}>
         <img className={styles["img"]} src="shopping-bags2.png" alt="shopping-bag.png" />
@@ -41,11 +44,14 @@ export default function CartPage() {
         </div>
         <Button onClick={()=>{}}>Continuar Compra</Button>
     </div>
-  )
+  );
   return (
     <LayoutComp user={user ? user : false}>
+        <button onClick={()=>{
+          setSwitcher(!switcher)
+        }}>Vacio</button>
         <div className={styles["cart-page"]}>
-            {cartProducts.length == 0 ? emptyCart : (
+            {/*cartProducts.length == 0*/ !switcher ? emptyCart : (
                 <div className={styles["cart-products-container"]}>
                     <CartProductCard imgUrl={product1?.images} price={product1?.unit_price} title={product1?.title}/>
                     <CartProductCard imgUrl={product2?.images} price={product2?.unit_price} title={product2?.title}/>
