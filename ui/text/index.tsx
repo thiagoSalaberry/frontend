@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 interface TextProps {
     fontWeight?: "bold" | "normal";
-    size?: "s" | "m" | "l";
+    size?: "xs" | "s" | "m" | "l";
     talign?: "left" | "center" | "right";
   }
 
@@ -29,6 +29,8 @@ export const Body = styled.label<TextProps>`
     text-align: ${props => props.talign};
     font-size: ${(props) => {
     switch (props.size) {
+      case "xs":
+        return "12px";
       case "s":
         return "14px";
       case "m":

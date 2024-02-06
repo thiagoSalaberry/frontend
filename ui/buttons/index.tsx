@@ -32,8 +32,14 @@ export const IconButtons = styled(Button)`
     width: auto;
 `
 
-export const CartButtons = styled(BackButton)`
-    font-size: 12px;
+export const CartButtons = styled.button`
+    background: none;
+    border: none;
+    font-size: 10px;
     font-weight: 600;
-    padding: 5px;
+    color: #4379f6;
+    cursor: pointer;
+    &:active {
+        color: #1e47a7;
+    }
 `

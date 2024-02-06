@@ -46,7 +46,7 @@ export default function CartPage() {
     <LayoutComp user={user ? user : false}>
         <div className={styles["cart-page"]}>
             {cartProducts.length == 0 ? emptyCart : (
-                <div className={styles["cart-products"]}>
+                <div className={styles["cart-products-container"]}>
                     <CartProductCard imgUrl={product1?.images} price={product1?.unit_price} title={product1?.title}/>
                     <CartProductCard imgUrl={product2?.images} price={product2?.unit_price} title={product2?.title}/>
                     <CartProductCard imgUrl={product3?.images} price={product3?.unit_price} title={product3?.title}/>

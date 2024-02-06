@@ -15,12 +15,12 @@ export default function CartProductCard(props:CardProps) {
                 <img className={styles["img"]} src={props.imgUrl} alt="product.jpg" />
             </div>
             <div className={styles["info"]}>
-                <Body fontWeight="bold" size="s" className={styles["product__title"]} talign="left">{props.title}</Body>
+                <Body size="xs" fontWeight="bold" className={styles["product__title"]} talign="left">{props.title}</Body>
                 <div className={styles["buttons-container"]}>
                     <CartButtons>Eliminar</CartButtons>
                     <CartButtons>Guardar</CartButtons>
                 </div>
-                <Body className={styles["product__price"]} size="l" fontWeight="bold">${props.price?.toLocaleString()}</Body>
+                <Body className={styles["product__price"]} size="m" fontWeight="bold">${props.price?.toLocaleString()}</Body>
             </div>
         </div>
     )
