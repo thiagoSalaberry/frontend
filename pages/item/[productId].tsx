@@ -11,8 +11,8 @@ import { SearcherComp } from "@/components/searcher"
 export default function HomePage() {
   const user = useMe()
   const params = useParams();
+  console.log(typeof params?.productId)
   const product = useProduct(String(params?.productId));
-  console.log(product)
   function handleForm(e:any) {
     e.preventDefault();
   };

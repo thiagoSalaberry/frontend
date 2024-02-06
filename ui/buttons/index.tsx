@@ -31,3 +31,9 @@ export const IconButtons = styled(Button)`
     padding: 7px;
     width: auto;
 `
+
+export const CartButtons = styled(BackButton)`
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px;
+`

@@ -46,7 +46,7 @@ export function HeaderComp(props:HeaderProp) {
             </Link>
             <div className={styles["buttons-container"]}>
                 {/* <button className={styles["person"]}><PersonIcon size="32"/></button> */}
-                <button className={styles["cart"]}><CartIcon size="32"/></button>
+                <button onClick={()=>Router.push("/cart")} className={styles["cart"]}><CartIcon size="32"/></button>
                 <button onClick={openMenu} className={styles["hamburguer"]}>
                     <div className={styles["bar"]}></div>
                     <div className={styles["bar"]}></div>
