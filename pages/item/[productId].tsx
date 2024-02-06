@@ -20,7 +20,7 @@ export default function HomePage() {
     <LayoutComp user={user ? user : false}>
       <div className={styles["item"]}>
         <SearcherComp type="text" name="query" placeholder="Encontrá tu producto acá..."/>
-        <BigCard title={product?.title} imgUrl={product?.images} price={product?.unit_price} stock={product?.stock} rating={product?.rating} reviews={product?.reviews} desc={product?.description}/>
+        <BigCard productId={product?.productId} title={product?.title} imgUrl={product?.images} price={product?.unit_price} stock={product?.stock} rating={product?.rating} reviews={product?.reviews} desc={product?.description}/>
       </div>
     </LayoutComp>
   )

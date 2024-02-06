@@ -11,16 +11,9 @@ import Router from "next/router"
 import CartProductCard from "@/components/cart-product-card"
 import { useState } from "react"
 export default function CartPage() {
-  const [switcher, setSwitcher] = useState(false);
   const user = useMe();
-  const product1 =  useProduct("501");
-  const product2 =  useProduct("301");
-  const product3 =  useProduct("403");
-  const cartProducts = [1,1,1];
-  function handleForm(e:any) {
-    e.preventDefault();
-  };
-  console.log({switcher})
+  const userCart:[] = user?.userData?.cart;
+  console.log(userCart)
   const emptyCart = (
     <div className={styles["empty-cart"]}>
         <img className={styles["img"]} src="shopping-bags2.png" alt="shopping-bag.png" />
@@ -31,8 +24,8 @@ export default function CartPage() {
   const total = (
     <div className={styles["cart-total"]}>
         <div className={styles["cart-total-products"]}>
-            <Body size="m">Productos ({cartProducts.length})</Body>
-            <Body size="m">${(product1?.unit_price + product2?.unit_price + product3?.unit_price).toLocaleString()}</Body>
+            <Body size="m">Productos ({userCart?.length})</Body>
+            <Body size="m">${(userCart?.map(prod => prod.unit_price).reduce((acc, cv) => acc + cv, 0))?.toLocaleString()}</Body>
         </div>
         <div className={styles["cart-total-products"]}>
             <Body size="m">Envío</Body>
@@ -40,26 +33,24 @@ export default function CartPage() {
         </div>
         <div className={styles["cart-total-products"]}>
             <Body size="l" fontWeight="bold">Total</Body>
-            <Body size="l" fontWeight="bold">${(product1?.unit_price + product2?.unit_price + product3?.unit_price).toLocaleString()}</Body>
+            <Body size="l" fontWeight="bold">${(userCart?.map(prod => prod.unit_price).reduce((acc, cv) => acc + cv, 0))?.toLocaleString()}</Body>
         </div>
         <Button onClick={()=>{}}>Continuar Compra</Button>
     </div>
   );
   return (
     <LayoutComp user={user ? user : false}>
-        <button onClick={()=>{
-          setSwitcher(!switcher)
-        }}>Vacio</button>
         <div className={styles["cart-page"]}>
-            {/*cartProducts.length == 0*/ !switcher ? emptyCart : (
-                <div className={styles["cart-products-container"]}>
-                    <CartProductCard imgUrl={product1?.images} price={product1?.unit_price} title={product1?.title}/>
-                    <CartProductCard imgUrl={product2?.images} price={product2?.unit_price} title={product2?.title}/>
-                    <CartProductCard imgUrl={product3?.images} price={product3?.unit_price} title={product3?.title}/>
-                </div>
-            )}
+          {userCart?.length == 0 ? emptyCart : (
+            <div className={styles["cart-products-container"]}>
+              <Label style={{textAlign: "center"}}>Carrito de Compras</Label>
+              {userCart?.map(prod => {
+                return <CartProductCard productId={prod.productId} imgUrl={prod.images} title={prod.title} price={prod.unit_price?.toLocaleString()}/>
+              })}
+            </div>
+          )}
         </div>
-        {switcher ? total : null}
+        {userCart?.length !== 0 ? total : null}
     </LayoutComp>
   )
 }

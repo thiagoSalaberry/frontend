@@ -13,7 +13,10 @@ type ProductProps = {
   reviews: number;
 };
 export function useMe() {
-  const { data, error } = useSWR("/me", fetchAPI);
+  const { data, error } = useSWR(
+    "/me",
+    fetchAPI /*, { refreshInterval: 1000 }*/
+  );
   return data;
 }
 
@@ -45,3 +48,7 @@ export function useFeaturedProducts() {
   const { data, error } = useSWR("/products", fetchAPI);
   if (data) return data.featuredProducts as Array<ProductProps>;
 }
+
+// export function useCartProducts() {
+//   const {data, error} = useSWR("/")
+// }

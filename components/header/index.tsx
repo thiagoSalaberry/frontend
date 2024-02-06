@@ -23,7 +23,7 @@ export function HeaderComp(props:HeaderProp) {
     };
     const footerContent = props.user ? (
         <div className={styles["footer"]}>
-            <Body size="s" color="white">{props.user.userData.email}</Body>
+            <Body size="s" color="white">{props.user.userData?.email}</Body>
             <Link onClick={deleteAccessToken} className={styles["link"]} href={"/"}>
                 <Body size="m" color="white">Cerrar sesión</Body>
             </Link>

@@ -79,3 +79,33 @@ export async function updateUserData(props: object) {
   const data = await response.json();
   return data;
 }
+
+export async function addToCart(productId: string) {
+  const response = await fetch(
+    `https://desafio-e-commerce-five.vercel.app/api/cart/${productId}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }
+  );
+  const data = await response.json();
+  return data;
+}
+
+export async function removeFromCart(productId: string) {
+  const response = await fetch(
+    `https://desafio-e-commerce-five.vercel.app/api/cart/${productId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }
+  );
+  const data = await response.json();
+  return data;
+}

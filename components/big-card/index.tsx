@@ -4,6 +4,7 @@ import { IconButtons } from "@/ui/buttons";
 import { LikeIcon } from "@/ui/icons/like";
 import { showStars } from "@/lib/stars";
 import { Button, BackButton } from "@/ui/buttons";
+import { addToCart } from "@/lib/api-calls";
 interface CardProps {
     title:string;
     desc?:string;
@@ -11,9 +12,13 @@ interface CardProps {
     imgUrl:string;
     rating?:number;
     reviews?:number;
-    stock?: "true" | "false"
+    stock?: "true" | "false";
+    productId:string;
 }
 export default function BigCard(props:CardProps) {
+    async function handleClick(propductId:string) {
+        await addToCart(propductId);
+    }
     const stars = showStars(props.rating!);
     return (
         <div className={styles["card"]}>
@@ -31,7 +36,7 @@ export default function BigCard(props:CardProps) {
             </div>
             <div className={styles["buttons-container"]}>
                 <Button >Comprar</Button>
-                <BackButton>Agregar al carrito</BackButton>
+                <BackButton onClick={()=>handleClick(props.productId)}>Agregar al carrito</BackButton>
             </div>
             <Body size="s">{props.desc}</Body>
         </div>
