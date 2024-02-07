@@ -7,15 +7,14 @@ import Link from "next/link";
 import { Button, BackButton } from "@/ui/buttons";
 import logo from "@/public/logo.jpg";
 import Router from "next/router";
+import { useState } from "react";
 type HeaderProp = {
     user:any;
 };
 export function HeaderComp(props:HeaderProp) {
-    function openMenu() {
-        document.getElementById("close-menu")!.classList.remove(styles["off"]);
-    };
-    function closeMenu() {
-        document.getElementById("close-menu")!.classList.add(styles["off"]);
+    const [menuOpen, setMenuOpen] = useState<boolean>(false);
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
     };
     function deleteAccessToken() {
         localStorage.removeItem("accessToken");
@@ -46,12 +45,12 @@ export function HeaderComp(props:HeaderProp) {
             </Link>
             <div className={styles["buttons-container"]}>
                 <button onClick={()=>Router.push("/cart")} className={styles["cart"]}><CartIcon size="32"/></button>
-                <button onClick={openMenu} className={styles["hamburguer"]}>
+                <button onClick={toggleMenu} className={styles["hamburguer"]}>
                     <div className={styles["bar"]}></div>
                     <div className={styles["bar"]}></div>
                     <div className={styles["bar"]}></div>
                 </button>
-                <div id="close-menu" className={`${styles["menu"]} ${styles["off"]}`}>
+                <div id="close-menu" className={`${styles["menu"]} ${menuOpen ? "" : styles["off"]}`}>
                     <div className={styles["menu-header"]}>
                         <Link href={"/"}>
                             <div className={styles["logo"]}>
@@ -61,26 +60,26 @@ export function HeaderComp(props:HeaderProp) {
                             </div>
                         </Link>
                     </div>
-                    <button onClick={closeMenu} className={styles["cruz"]}><XIcon size="48"/></button>
+                    <button onClick={toggleMenu} className={styles["cruz"]}><XIcon size="48"/></button>
                     <div className={styles["clothes-list"]}>
-                        <Link onClick={closeMenu} className={styles["link"]} href={"/search?q=buzos&offset=10&limit=10"}>
+                        <Link onClick={toggleMenu} className={styles["link"]} href={"/search?q=buzos&offset=10&limit=10"}>
                             <Body size={"m"} fontWeight="bold" color="black">BUZOS</Body>
                         </Link>
-                        <Link onClick={closeMenu} className={styles["link"]} href={"/search?q=camisas&offset=10&limit=10"}>
+                        <Link onClick={toggleMenu} className={styles["link"]} href={"/search?q=camisas&offset=10&limit=10"}>
                             <Body size={"m"} fontWeight="bold" color="black">CAMISAS</Body>
                         </Link>
-                        <Link onClick={closeMenu} className={styles["link"]} href={"/search?q=pantalones&offset=10&limit=10"}>
+                        <Link onClick={toggleMenu} className={styles["link"]} href={"/search?q=pantalones&offset=10&limit=10"}>
                             <Body size={"m"} fontWeight="bold" color="black">PANTALONES</Body>
                         </Link>
-                        <Link onClick={closeMenu} className={styles["link"]} href={"/search?q=vestidos&offset=10&limit=10"}>
+                        <Link onClick={toggleMenu} className={styles["link"]} href={"/search?q=vestidos&offset=10&limit=10"}>
                             <Body size={"m"} fontWeight="bold" color="black">VESTIDOS</Body>
                         </Link>
-                        <Link onClick={closeMenu} className={styles["link"]} href={"/search?q=zapatillas&offset=10&limit=10"}>
+                        <Link onClick={toggleMenu} className={styles["link"]} href={"/search?q=zapatillas&offset=10&limit=10"}>
                             <Body size={"m"} fontWeight="bold" color="black">ZAPATILLAS</Body>
                         </Link>
                     </div>
                     <div className={styles["list"]}>
-                        <Link onClick={closeMenu} className={styles["link"]} href={"/"}>
+                        <Link onClick={toggleMenu} className={styles["link"]} href={"/"}>
                             <Body size={"m"} color="black">Inicio</Body>
                         </Link>
                         <Link className={styles["link"]} href={props.user ? "/profile" : "/signin"}>
