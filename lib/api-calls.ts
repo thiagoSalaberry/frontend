@@ -37,6 +37,24 @@ export async function getToken(email: string, code: number) {
     throw new Error("Error de cliente llamado por getToken()");
   }
 }
+export async function useToken(token: string) {
+  const response = await fetch(
+    `https://desafio-e-commerce-five.vercel.app/api/me`,
+    {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  if (response.status >= 200 && response.status < 300) {
+    const data = await response.json();
+    return data;
+  } else if (response.status >= 400 && response.status < 500) {
+    throw new Error("Error de cliente llamado por getToken()");
+  }
+}
 export async function featuredProducts(): Promise<any[]> {
   const response = await fetch(
     `https://desafio-e-commerce-five.vercel.app/api/products`,

@@ -4,11 +4,11 @@ import { Button } from "@/ui/buttons"
 import { Input } from "@/ui/textfields"
 import styles from "./signin.module.css";
 import Router from "next/router";
-import { sendCode, getToken } from "@/lib/api-calls";
+import { sendCode, getToken, useToken } from "@/lib/api-calls";
 import { useState } from "react";
 import { useMe } from "@/lib/hooks";
-export default function HomePage() {
-    const user = useMe();
+export default function SigninPage() {
+    
     const [email, setEmail] = useState("");
     const [code, setCode] = useState("");
     async function getCode(e:any) {
@@ -17,18 +17,21 @@ export default function HomePage() {
         console.log("Email que viene del getCode()", email)
         const result = await sendCode(email);
         if(result) {
-                setEmail(email);
-            };
+            setEmail(email);
         };
-        async function submitCode(e:any) {
-            e.preventDefault();
-            const code = e.target.code.value;
-            console.log("Code que viene del getCode()", code)
+    };
+    async function submitCode(e:any) {
+        e.preventDefault();
+        const code = e.target.code.value;
+        console.log("Code que viene del getCode()", code)
         const {token} = await getToken(email, code);
         if(token) {
             setCode(code);
             localStorage.setItem("accessToken", token);
-            Router.push("/")
+            const user = await useToken(token);
+            if(user) {
+                Router.push("/")
+            }
         }
     }
     const formContent = !email ? (
@@ -50,7 +53,7 @@ export default function HomePage() {
         </form>
     );
   return (
-    <LayoutComp user={user ? user : false}>
+    <LayoutComp user={false}>
         <div className={styles["signin-page"]}>
             <Title>Ingresar</Title>
             {formContent}
