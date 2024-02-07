@@ -9,12 +9,14 @@ import styles from "./home.module.css";
 import { featuredProducts, searchProduct } from "@/lib/api-calls";
 import Link from "next/link";
 import { SearcherComp } from "@/components/searcher";
+import { CatalogComp } from "@/components/catalogo";
 export default function HomePage() {
   const user = useMe();
   const featuredProducts = useFeaturedProducts();
   return (
     <LayoutComp user={user ? user : false}>
       <div className={styles["welcome"]}>
+        <CatalogComp/>
         <Title>TEOXYS SHOP</Title>
         <SearcherComp type="text" name="query" placeholder="Encontrá tu producto acá..."/>
       </div>

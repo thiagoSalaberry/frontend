@@ -5,12 +5,13 @@ import { SearchIcon } from "@/ui/icons/search";
 import { PersonIcon } from "@/ui/icons/person";
 import Card from "@/components/cards";
 import { LayoutComp } from "@/components/layout";
+import { CatalogComp } from "@/components/catalogo";
 import styles from "./ui.module.css"
 export default function UI() {
     return (
         <LayoutComp user={false}>
             <section className={styles["ui-page"]}>
-                <div className={styles["display"]}>
+                {/* <div className={styles["display"]}>
                     <Label fontWeight="normal">Botones</Label>
                     <div className={styles["container"]}>
                         <Button>Botón</Button>
@@ -48,7 +49,8 @@ export default function UI() {
                         <Card title="Mate" desc="Ideal para unos mates bien amargos." imgUrl="https://estiloaustral.com/wp-content/uploads/2023/03/0002s_0008_MATE0049-MATE-IMPERIAL-DOBLE-VIROLA-1.png.webp" rating={4} price={100}/>
                         <Card title="Mouse" desc="Ideal para unos buenos headshots." imgUrl="https://resource.logitech.com/content/dam/gaming/en/products/pro-gaming-mouse/plasma-hero-carbon-gallery-4.png" price={500}/>
                     </div>
-                </div>
+                </div> */}
+                <CatalogComp/>
             </section>
         </LayoutComp>
     )
