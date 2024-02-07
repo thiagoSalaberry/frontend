@@ -9,17 +9,11 @@ import Router from "next/router"
 import { useEffect } from "react"
 export default function LogOutPage() {
     useEffect(()=>{
-        let seconds = 1;
-        const inteval = setInterval(()=>{
-            if(seconds <= 0){
-                clearInterval(inteval);
-                localStorage.removeItem("accessToken");
-                window.location.reload();
-                Router.push("/")
-            }else{
-                seconds--
-            }
-        }, 1000);
+        const logoutTimer = setInterval(()=>{
+            localStorage.removeItem("accessToken");
+            Router.push("/")
+        }, 2000);
+        return  () => clearInterval(logoutTimer)
     }, [])
   return (
     <main className={styles["logout-page"]}>
