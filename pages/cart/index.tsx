@@ -1,20 +1,14 @@
 import { LayoutComp } from "@/components/layout"
-import { Title, Subtitle, Body, Label } from "@/ui/text"
-import { Button, BackButton } from "@/ui/buttons"
-import Card from "@/components/cards"
-import BigCard from "@/components/big-card"
-import { Input, SecondInput } from "@/ui/textfields"
+import { Body, Label } from "@/ui/text"
+import { Button } from "@/ui/buttons"
 import styles from "./cart.module.css";
-import { useMe, useProduct } from "@/lib/hooks";
-import { useParams } from "next/navigation";
+import { useMe } from "@/lib/hooks";
 import Router from "next/router"
 import CartProductCard from "@/components/cart-product-card"
-import { useState } from "react";
 import {ProductProps} from "@/lib/types";
 export default function CartPage() {
   const user = useMe();
   const userCart:ProductProps[] = user?.userData?.cart;
-  console.log(userCart)
   const emptyCart = (
     <div className={styles["empty-cart"]}>
         <img className={styles["img"]} src="shopping-bags2.png" alt="shopping-bag.png" />
@@ -41,16 +35,16 @@ export default function CartPage() {
   );
   return (
     <LayoutComp user={user ? user : false}>
-        <div className={styles["cart-page"]}>
+        <main className={styles["cart-page"]}>
           {userCart?.length == 0 ? emptyCart : (
             <div className={styles["cart-products-container"]}>
-              <Label style={{textAlign: "center"}}>Carrito de Compras</Label>
+              <Label style={{textAlign: "center"}}>Tu carrito de compras</Label>
               {userCart?.map(prod => {
                 return <CartProductCard productId={prod.productId} imgUrl={prod.images} title={prod.title} price={prod.unit_price}/>
               })}
             </div>
           )}
-        </div>
+        </main>
         {userCart?.length !== 0 ? total : null}
     </LayoutComp>
   )

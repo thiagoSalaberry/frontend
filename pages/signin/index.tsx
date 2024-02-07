@@ -1,7 +1,7 @@
 import { LayoutComp } from "@/components/layout"
-import { Title, Body, Label } from "@/ui/text"
-import { Button, BackButton } from "@/ui/buttons"
-import { Input, SecondInput } from "@/ui/textfields"
+import { Title, Body } from "@/ui/text"
+import { Button } from "@/ui/buttons"
+import { Input } from "@/ui/textfields"
 import styles from "./signin.module.css";
 import Router from "next/router";
 import { sendCode, getToken } from "@/lib/api-calls";
@@ -36,7 +36,6 @@ export default function HomePage() {
             <div className={styles["input-container"]}>
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">E-Mail</Body>
                 <Input type="email" name="email"/>
-                {/* <SecondInput label="E-Mail" type="email"></SecondInput> */}
             </div>
             <Button>Continuar</Button>
         </form>
@@ -52,7 +51,7 @@ export default function HomePage() {
     );
   return (
     <LayoutComp user={user ? user : false}>
-        <div className={styles["signin"]}>
+        <div className={styles["signin-page"]}>
             <Title>Ingresar</Title>
             {formContent}
         </div>

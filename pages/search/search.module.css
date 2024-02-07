@@ -1,26 +1,17 @@
-.search, .form, .input-container, .results {
+.search-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 40px;
     width: 100%;
-    padding: 20px;
+    padding: 50px 20px;
+    gap: 20px;
 }
 .cards-container {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 15px;
-}
-.input-container {
-    gap: 5px;
-    width: 100%;
-}
-.form {
-    width: 100%;
-    gap: 20px;
-    align-items: center;
 }
 .link {
     text-decoration: none;

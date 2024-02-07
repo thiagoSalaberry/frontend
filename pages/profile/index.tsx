@@ -1,7 +1,7 @@
 import { LayoutComp } from "@/components/layout"
-import { Title, Body, Label } from "@/ui/text"
-import { Button, BackButton } from "@/ui/buttons"
-import { Input, SecondInput } from "@/ui/textfields"
+import { Title, Body } from "@/ui/text"
+import { Button } from "@/ui/buttons"
+import { Input } from "@/ui/textfields"
 import { useMe } from "@/lib/hooks"
 import styles from "./profile.module.css"
 import { updateUserData } from "@/lib/api-calls"
@@ -48,10 +48,10 @@ export default function ProfilePage() {
     );
   return (
     <LayoutComp user={user ? user : false}>
-        <div className={styles["profile"]}>
+        <main className={styles["profile-page"]}>
             <Title>Perfil</Title>
             {formContent}
-        </div>
+        </main>
     </LayoutComp>
   )
 }

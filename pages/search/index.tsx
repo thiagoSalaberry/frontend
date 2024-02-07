@@ -1,14 +1,11 @@
 import { LayoutComp } from "@/components/layout"
-import { Title, Body, Label, Subtitle } from "@/ui/text"
+import { Body, Subtitle } from "@/ui/text"
 import Card from "@/components/cards"
 import { useMe, useSearchProducts } from "@/lib/hooks"
 import styles from "./search.module.css";
 import Link from "next/link"
-import { fetchAPI } from "@/lib/api";
 import { useSearchParams } from "next/navigation"
 import { SearcherComp } from "@/components/searcher";
-import Router from "next/router";
-import useSWR from "swr";
 export default function HomePage() {
   const user = useMe();
   const params = useSearchParams();
@@ -31,7 +28,7 @@ export default function HomePage() {
       ) : null;
   return (
     <LayoutComp user={user ? user : false}>
-      <div className={styles["search"]}>
+      <div className={styles["search-page"]}>
         <Subtitle>BUSCADOR</Subtitle>
       <SearcherComp type="text" name="query" placeholder="Encontrá tu producto acá..."/>
       {results}
