@@ -9,7 +9,7 @@ export function LayoutComp(props:LayoutProps) {
     return (
         <div>
             <HeaderComp user={props.user}/>
-            <main className={styles["main"]}>{props.children}</main>
+                <main className={styles["main"]}>{props.children}</main>
             <FooterComp user={props.user}/>
         </div>
     )

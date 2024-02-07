@@ -18,7 +18,8 @@ export function HeaderComp(props:HeaderProp) {
     };
     function deleteAccessToken() {
         localStorage.removeItem("accessToken");
-        Router.push("/");
+        window.location.reload();
+        Router.push("/")
     };
     const footerContent = props.user ? (
         <div className={styles["footer"]}>

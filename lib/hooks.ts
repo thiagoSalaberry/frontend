@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { fetchAPI } from "./api";
+import { fetchAPI, fetchAPI2 } from "./api";
 import exp from "constants";
 type ProductProps = {
   productId: string;
@@ -15,13 +15,13 @@ type ProductProps = {
 export function useMe() {
   const { data, error } = useSWR(
     "/me",
-    fetchAPI /*, { refreshInterval: 1000 }*/
+    fetchAPI2 /*, { refreshInterval: 1000 }*/
   );
   return data;
 }
 
 export function useProduct(productId: string) {
-  const { data, error } = useSWR(`/products/${productId}`, fetchAPI);
+  const { data, error } = useSWR(`/products/${productId}`, fetchAPI2);
   return data as ProductProps;
 }
 export function useSearchProducts(
@@ -31,7 +31,7 @@ export function useSearchProducts(
 ) {
   const { data, error, isLoading } = useSWR(
     `/search?q=${query}&offset=${offset}&limit=${limit}`,
-    fetchAPI
+    fetchAPI2
   );
   if (data)
     return {
@@ -45,7 +45,7 @@ export function useSearchProducts(
     };
 }
 export function useFeaturedProducts() {
-  const { data, error } = useSWR("/products", fetchAPI);
+  const { data, error } = useSWR("/products", fetchAPI2);
   if (data) return data.featuredProducts as Array<ProductProps>;
 }
 
