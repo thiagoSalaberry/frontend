@@ -27,7 +27,11 @@ export function HeaderComp(props:HeaderProp) {
         </div>
     ) : (
         <div className={styles["footer"]}>
-            <Link className={styles["link"]} href={"/signin"}>
+            <Link onClick={()=>{
+                if(location.pathname == "/signin") {
+                    toggleMenu();
+                }
+            }} className={styles["link"]} href={"/signin"}>
                 <Body size="m" fontWeight="bold" color="black">Iniciar sesión</Body>
             </Link>
         </div>
