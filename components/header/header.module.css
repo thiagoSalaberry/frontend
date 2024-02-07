@@ -71,28 +71,49 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--black); 
+    background: var(--fondo); 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 10px 10px 50px 10px;
+    transition: left 0.5s ease;
+}
+.menu-header {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0px;
+    border-bottom: 1px rgb(219, 219, 219) solid;
 }
 .cruz {
+    position: absolute;
+    top: 15px;
+    right: 15px;
     background: none;
-    color: white;
+    color: black;
     border: none;
     padding: 0;
     align-self: end;
 }
-.list, .footer {
+.clothes-list, .list, .footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    gap: 50px;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+    border-bottom: 1px rgb(219, 219, 219) solid;
+}
+.list {
+    border-bottom: none;
 }
 .footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
+    border-top: 1px rgb(219, 219, 219) solid;
+    border-bottom: none;
 }
 .off {
     display: none;

@@ -16,7 +16,6 @@ export default function HomePage() {
   return (
     <LayoutComp user={user ? user : false}>
       <div className={styles["welcome"]}>
-        <CatalogComp/>
         <Title>TEOXYS SHOP</Title>
         <SearcherComp type="text" name="query" placeholder="Encontrá tu producto acá..."/>
       </div>
