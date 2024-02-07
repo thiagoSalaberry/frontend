@@ -8,7 +8,7 @@ type LayoutProps = {
 export function LayoutComp(props:LayoutProps) {
     return (
         <div>
-            <HeaderComp user={props.user}/>
+            <HeaderComp user={props.user} menuState={false}/>
                 <main className={styles["main"]}>{props.children}</main>
             <FooterComp user={props.user}/>
         </div>

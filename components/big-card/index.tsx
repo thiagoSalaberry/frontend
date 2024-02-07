@@ -5,7 +5,9 @@ import { LikeIcon } from "@/ui/icons/like";
 import { showStars } from "@/lib/stars";
 import { Button, BackButton } from "@/ui/buttons";
 import { addToCart } from "@/lib/api-calls";
+import Router from "next/router";
 interface CardProps {
+    user:boolean
     title:string;
     desc?:string;
     price:number;
@@ -16,8 +18,14 @@ interface CardProps {
     productId:string;
 }
 export default function BigCard(props:CardProps) {
-    async function handleClick(propductId:string) {
-        await addToCart(propductId);
+    async function handleClick(action:"buy" | "addToCart",propductId:string) {
+        if(!props.user) {
+            Router.push("/signin")
+        } else if(props.user && action == "addToCart") {
+            await addToCart(propductId);
+        } else if(props.user && action ==  "buy"){
+            console.log("Comprar")
+        }
     }
     const stars = showStars(props.rating!);
     return (
@@ -35,8 +43,8 @@ export default function BigCard(props:CardProps) {
                 <Body color="grey">({props.reviews})</Body>
             </div>
             <div className={styles["buttons-container"]}>
-                <Button >Comprar</Button>
-                <BackButton onClick={()=>handleClick(props.productId)}>Agregar al carrito</BackButton>
+                <Button onClick={()=>handleClick("buy", props.productId)}>Comprar</Button>
+                <BackButton onClick={()=>handleClick("addToCart", props.productId)}>Agregar al carrito</BackButton>
             </div>
             <Body size="s">{props.desc}</Body>
         </div>

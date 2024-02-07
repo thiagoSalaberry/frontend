@@ -7,24 +7,21 @@ import Link from "next/link";
 import { Button, BackButton } from "@/ui/buttons";
 import logo from "@/public/logo.jpg";
 import Router from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { mutate } from "swr";
 type HeaderProp = {
     user:any;
+    menuState:false
 };
 export function HeaderComp(props:HeaderProp) {
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
     };
-    function deleteAccessToken() {
-        localStorage.removeItem("accessToken");
-        window.location.reload();
-        Router.push("/")
-    };
     const footerContent = props.user ? (
         <div className={styles["footer"]}>
             <Body size="s" color="black">{props.user.userData?.email}</Body>
-            <Link onClick={deleteAccessToken} className={styles["link"]} href={"/"}>
+            <Link className={styles["link"]} href={"/logout"}>
                 <Body size="m" fontWeight="bold" color="black">Cerrar sesión</Body>
             </Link>
         </div>
@@ -45,7 +42,13 @@ export function HeaderComp(props:HeaderProp) {
                 </div>
             </Link>
             <div className={styles["buttons-container"]}>
-                <button onClick={()=>Router.push("/cart")} className={styles["cart"]}><CartIcon size="32"/></button>
+                <button onClick={()=>{
+                    if(props.user) {
+                        Router.push("/cart")
+                    } else {
+                        Router.push("/signin")
+                    }
+                }} className={styles["cart"]}><CartIcon size="32"/></button>
                 <button onClick={toggleMenu} className={styles["hamburguer"]}>
                     <div className={styles["bar"]}></div>
                     <div className={styles["bar"]}></div>
@@ -53,7 +56,7 @@ export function HeaderComp(props:HeaderProp) {
                 </button>
                 <div id="close-menu" className={`${styles["menu"]} ${menuOpen ? "" : styles["off"]}`}>
                     <div className={styles["menu-header"]}>
-                        <Link href={"/"}>
+                        <Link onClick={toggleMenu} href={"/"}>
                             <div className={styles["logo"]}>
                                 <div className={`${styles["logo-h"]} ${styles["white"]}`}></div>
                                 <div className={`${styles["logo-v"]} ${styles["white"]}`}></div>
@@ -63,30 +66,67 @@ export function HeaderComp(props:HeaderProp) {
                     </div>
                     <button onClick={toggleMenu} className={styles["cruz"]}><XIcon size="48"/></button>
                     <div className={styles["clothes-list"]}>
-                        <Link onClick={toggleMenu} className={styles["link"]} href={"/search?q=buzos&offset=10&limit=10"}>
+                        <Link onClick={()=>{
+                            console.log(location.pathname)
+                            if(location.pathname.includes("/search")) {
+                                toggleMenu();
+                            }
+                        }} className={styles["link"]} href={"/search?q=buzos&offset=10&limit=10"}>
                             <Body size={"m"} fontWeight="bold" color="black">BUZOS</Body>
                         </Link>
-                        <Link onClick={toggleMenu} className={styles["link"]} href={"/search?q=camisas&offset=10&limit=10"}>
+                        <Link onClick={()=>{
+                            console.log(location.pathname)
+                            if(location.pathname.includes("/search")) {
+                                toggleMenu();
+                            }
+                        }} className={styles["link"]} href={"/search?q=camisas&offset=10&limit=10"}>
                             <Body size={"m"} fontWeight="bold" color="black">CAMISAS</Body>
                         </Link>
-                        <Link onClick={toggleMenu} className={styles["link"]} href={"/search?q=pantalones&offset=10&limit=10"}>
+                        <Link onClick={()=>{
+                            console.log(location.pathname)
+                            if(location.pathname.includes("/search")) {
+                                toggleMenu();
+                            }
+                        }} className={styles["link"]} href={"/search?q=pantalones&offset=10&limit=10"}>
                             <Body size={"m"} fontWeight="bold" color="black">PANTALONES</Body>
                         </Link>
-                        <Link onClick={toggleMenu} className={styles["link"]} href={"/search?q=vestidos&offset=10&limit=10"}>
+                        <Link onClick={()=>{
+                            console.log(location.pathname)
+                            if(location.pathname.includes("/search")) {
+                                toggleMenu();
+                            }
+                        }} className={styles["link"]} href={"/search?q=vestidos&offset=10&limit=10"}>
                             <Body size={"m"} fontWeight="bold" color="black">VESTIDOS</Body>
                         </Link>
-                        <Link onClick={toggleMenu} className={styles["link"]} href={"/search?q=zapatillas&offset=10&limit=10"}>
+                        <Link onClick={()=>{
+                            console.log(location.pathname)
+                            if(location.pathname.includes("/search")) {
+                                toggleMenu();
+                            }
+                        }} className={styles["link"]} href={"/search?q=zapatillas&offset=10&limit=10"}>
                             <Body size={"m"} fontWeight="bold" color="black">ZAPATILLAS</Body>
                         </Link>
                     </div>
                     <div className={styles["list"]}>
-                        <Link onClick={toggleMenu} className={styles["link"]} href={"/"}>
+                        <Link onClick={()=>{
+                            if(location.pathname == "/") {
+                                toggleMenu();
+                            }
+                        }} className={styles["link"]} href={"/"}>
                             <Body size={"m"} color="black">Inicio</Body>
                         </Link>
-                        <Link className={styles["link"]} href={props.user ? "/profile" : "/signin"}>
+                        <Link onClick={()=>{
+                            if(location.pathname == "/profile" || location.pathname == "/signin") {
+                                toggleMenu();
+                            }
+                        }} className={styles["link"]} href={props.user ? "/profile" : "/signin"}>
                             <Body size={"m"} color="black">Mi perfil</Body>
                         </Link>
-                        <Link className={styles["link"]} href={"/search"}>
+                        <Link onClick={()=>{
+                            if(location.pathname == "/search") {
+                                toggleMenu();
+                            }
+                        }} className={styles["link"]} href={"/search"}>
                             <Body size={"m"} color="black">Buscar</Body>
                         </Link>
                     </div>

@@ -5,6 +5,7 @@ import { LayoutComp } from "@/components/layout"
 import styles from "./home.module.css";
 import Link from "next/link";
 import { SearcherComp } from "@/components/searcher";
+import { useEffect, useState } from "react";
 export default function HomePage() {
   const user = useMe();
   const featuredProducts = useFeaturedProducts();

@@ -40,7 +40,7 @@ export default function CartPage() {
             <div className={styles["cart-products-container"]}>
               <Label style={{textAlign: "center"}}>Tu carrito de compras</Label>
               {userCart?.map(prod => {
-                return <CartProductCard productId={prod.productId} imgUrl={prod.images} title={prod.title} price={prod.unit_price}/>
+                return <CartProductCard key={prod.productId} productId={prod.productId} imgUrl={prod.images} title={prod.title} price={prod.unit_price}/>
               })}
             </div>
           )}

@@ -17,7 +17,11 @@ export function useMe() {
     "/me",
     fetchAPI2 /*, { refreshInterval: 1000 }*/
   );
-  return data;
+  if (error) {
+    return null;
+  } else {
+    return data;
+  }
 }
 
 export function useProduct(productId: string) {

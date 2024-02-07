@@ -12,7 +12,7 @@ export default function HomePage() {
     <LayoutComp user={user ? user : false}>
       <main className={styles["item-page"]}>
         <SearcherComp type="text" name="query" placeholder="Encontrá tu producto acá..."/>
-        <BigCard productId={product?.productId} title={product?.title} imgUrl={product?.images} price={product?.unit_price} stock={product?.stock} rating={product?.rating} reviews={product?.reviews} desc={product?.description}/>
+        <BigCard user={user} productId={product?.productId} title={product?.title} imgUrl={product?.images} price={product?.unit_price} stock={product?.stock} rating={product?.rating} reviews={product?.reviews} desc={product?.description}/>
       </main>
     </LayoutComp>
   )

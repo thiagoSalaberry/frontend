@@ -8,11 +8,6 @@ type FooterProp = {
     user:any;
 };
 export function FooterComp(props:FooterProp) {
-    function deleteAccessToken() {
-        localStorage.removeItem("accessToken");
-        window.location.reload();
-        Router.push("/")
-    };
     const routesContent = (props.user !== false ? 
         <div className={styles["routes"]}>
             <Link className={styles["link"]} href={"/profile"}>
@@ -21,7 +16,7 @@ export function FooterComp(props:FooterProp) {
             <Link className={styles["link"]} href={"/search"}>
                 <Body color="white" size="m">Buscar</Body>
             </Link>
-            <Link onClick={deleteAccessToken} className={styles["link"]} href={"/"}>
+            <Link className={styles["link"]} href={"/logout"}>
                 <Body color="white" size="m">Cerrar sesión</Body>
             </Link>
         </div>

@@ -70,6 +70,6 @@ export async function fetchAPI2(endpoint: string) {
     const data = await res.json();
     return data;
   } else if (res.status >= 400 && res.status < 500) {
-    throw new Error("Error de cliente llamado por fetchAPI()");
+    throw new Error("Error en el fetchAPI()");
   }
 }
