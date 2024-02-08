@@ -1,0 +1,47 @@
+.delivery-card, .pickup-card {
+    position: relative;
+    background: var(--fondo);
+    width: 100%;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 15px 1fr auto;
+    grid-template-rows: auto auto auto;
+    padding: 15px;
+    gap: 15px;
+    box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.9), 5px 5px 10px 0px rgba(44, 45, 46, 0.15);
+}
+.radio {
+    width: 15px;
+    display: inline;
+}
+.address {
+    grid-column: 2/3;
+    grid-row: 2;
+}
+.pickup-card {
+    grid-template-columns: 15px 1fr auto;
+    grid-template-rows: 1fr;
+}
+.divider {
+    width: 100%;
+    height: 1px;
+    background: rgb(219, 219, 219);
+    grid-column: 1/4;
+    grid-row: 3;
+}
+.change-delivery {
+    grid-column: 2/3;
+    grid-row: 4;
+}
+.form {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.input-container {
+    gap: 5px;
+    width: 100%;
+    padding: 0;
+}

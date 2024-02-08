@@ -27,7 +27,7 @@ export default function BigCard(props:CardProps) {
             const added = await addToCart(propductId);
             if(added) return notify("¡El producto se agregó al carrito correctamente!");
         } else if(props.user && action ==  "buy"){
-            console.log("Comprar")
+            Router.push(`/checkout/${propductId}`)
         }
     }
     const stars = showStars(props.rating!);
