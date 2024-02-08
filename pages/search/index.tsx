@@ -35,9 +35,9 @@ export default function HomePage() {
         <div className={styles["cards-container"]}>
           {foundProducts?.results?.map(prod => {
             return (
-              <Link className={styles["link"]} key={prod.productId} href={`/item/${prod.productId}`}>
-                <Card title={prod.title} price={prod.unit_price} imgUrl={prod.images} stock={prod.stock} desc={prod.description} rating={prod.rating} reviews={prod.reviews}/>
-              </Link>
+              // <Link className={styles["link"]} key={prod.productId} href={`/item/${prod.productId}`}>
+                <Card user={user} productId={prod.productId} title={prod.title} unit_price={prod.unit_price} imgUrl={prod.images} stock={prod.stock} desc={prod.description} rating={prod.rating} reviews={prod.reviews}/>
+              // </Link>
             )
           })}
         </div>

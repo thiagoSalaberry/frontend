@@ -9,6 +9,7 @@ import logo from "@/public/logo.jpg";
 import Router from "next/router";
 import { useEffect, useState } from "react";
 import { mutate } from "swr";
+import { BookmarkIcon } from "@/ui/icons/bookmark";
 type HeaderProp = {
     user:any;
     menuState:false
@@ -46,6 +47,13 @@ export function HeaderComp(props:HeaderProp) {
                 </div>
             </Link>
             <div className={styles["buttons-container"]}>
+                {/* <button onClick={()=>{
+                    if(props.user) {
+                        Router.push("/favs")
+                    } else {
+                        Router.push("/signin")
+                    }
+                }} className={styles["cart"]}><BookmarkIcon size="28"/></button> */}
                 <button onClick={()=>{
                     if(props.user) {
                         Router.push("/cart")
@@ -125,6 +133,13 @@ export function HeaderComp(props:HeaderProp) {
                             }
                         }} className={styles["link"]} href={props.user ? "/profile" : "/signin"}>
                             <Body size={"m"} color="black">Mi perfil</Body>
+                        </Link>
+                        <Link onClick={()=>{
+                            if(location.pathname == "/bookmarks" || location.pathname == "/signin") {
+                                toggleMenu();
+                            }
+                        }} className={styles["link"]} href={props.user ? "/bookmarks" : "/signin"}>
+                            <Body size={"m"} color="black">Guardados</Body>
                         </Link>
                         <Link onClick={()=>{
                             if(location.pathname == "/search") {

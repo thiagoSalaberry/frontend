@@ -6,8 +6,8 @@ import { showStars } from "@/lib/stars";
 import { Button, BackButton } from "@/ui/buttons";
 import { addToCart } from "@/lib/api-calls";
 import Router from "next/router";
-import { ToastContainer, toast } from "react-toastify";
-import  'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import { notify } from "@/lib/notify";
 interface CardProps {
     user:boolean
     title:string;
@@ -20,23 +20,12 @@ interface CardProps {
     productId:string;
 }
 export default function BigCard(props:CardProps) {
-    const notify = () => toast.success("¡El producto se agregó correctamente!", {
-        position: "bottom-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        className: "toast-comp",
-        progress: undefined,
-        theme: "light",
-    });
     async function handleClick(action:"buy" | "addToCart",propductId:string) {
         if(!props.user) {
             Router.push("/signin")
         } else if(props.user && action == "addToCart") {
             const added = await addToCart(propductId);
-            if(added) return notify();
+            if(added) return notify("¡El producto se agregó al carrito correctamente!");
         } else if(props.user && action ==  "buy"){
             console.log("Comprar")
         }
