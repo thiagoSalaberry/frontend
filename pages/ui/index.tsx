@@ -7,6 +7,7 @@ import Card from "@/components/cards";
 import { LayoutComp } from "@/components/layout";
 import { CatalogComp } from "@/components/catalogo";
 import styles from "./ui.module.css"
+import { ToastifyComp } from "@/components/toast";
 export default function UI() {
     return (
         <LayoutComp user={false}>
@@ -50,7 +51,7 @@ export default function UI() {
                         <Card title="Mouse" desc="Ideal para unos buenos headshots." imgUrl="https://resource.logitech.com/content/dam/gaming/en/products/pro-gaming-mouse/plasma-hero-carbon-gallery-4.png" price={500}/>
                     </div>
                 </div> */}
-                <CatalogComp/>
+                <ToastifyComp/>
             </section>
         </LayoutComp>
     )

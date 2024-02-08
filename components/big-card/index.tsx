@@ -6,6 +6,8 @@ import { showStars } from "@/lib/stars";
 import { Button, BackButton } from "@/ui/buttons";
 import { addToCart } from "@/lib/api-calls";
 import Router from "next/router";
+import { ToastContainer, toast } from "react-toastify";
+import  'react-toastify/dist/ReactToastify.css';
 interface CardProps {
     user:boolean
     title:string;
@@ -18,11 +20,23 @@ interface CardProps {
     productId:string;
 }
 export default function BigCard(props:CardProps) {
+    const notify = () => toast.success("¡El producto se agregó correctamente!", {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        className: "toast-comp",
+        progress: undefined,
+        theme: "light",
+    });
     async function handleClick(action:"buy" | "addToCart",propductId:string) {
         if(!props.user) {
             Router.push("/signin")
         } else if(props.user && action == "addToCart") {
-            await addToCart(propductId);
+            const added = await addToCart(propductId);
+            if(added) return notify();
         } else if(props.user && action ==  "buy"){
             console.log("Comprar")
         }
@@ -47,6 +61,7 @@ export default function BigCard(props:CardProps) {
                 <BackButton onClick={()=>handleClick("addToCart", props.productId)}>Agregar al carrito</BackButton>
             </div>
             <Body size="s">{props.desc}</Body>
+            <ToastContainer/>
         </div>
     )
 }
