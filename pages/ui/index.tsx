@@ -51,7 +51,7 @@ export default function UI() {
                         <Card title="Mouse" desc="Ideal para unos buenos headshots." imgUrl="https://resource.logitech.com/content/dam/gaming/en/products/pro-gaming-mouse/plasma-hero-carbon-gallery-4.png" price={500}/>
                     </div>
                 </div> */}
-                <ToastifyComp/>
+                {/* <ToastifyComp/> */}
             </section>
         </LayoutComp>
     )
