@@ -22,7 +22,7 @@ export default function HomePage() {
   const featuredProducts = useFeaturedProducts();
   const bookmarkedProducts = user?.userData?.bookmarks;
   function isBookmarked(productId:string):boolean {
-    return bookmarkedProducts.some((bookmarksProd:ProductProps) => bookmarksProd.productId == productId) ? true : false
+    return bookmarkedProducts?.some((bookmarksProd:ProductProps) => bookmarksProd.productId == productId);
   }
   return (
     <LayoutComp user={user ? user : false}>
