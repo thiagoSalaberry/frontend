@@ -5,8 +5,10 @@ import { LikeIcon } from "@/ui/icons/like";
 import { showStars } from "@/lib/stars";
 import { addToCart, removeFromCart, addToBookmarks, removeFromBookmarks } from "@/lib/api-calls";
 import { useSWRConfig } from "swr";
+import Router from "next/router";
 import { ToastContainer } from "react-toastify";
 import { notify } from "@/lib/notify";
+import { useState } from "react";
 interface CardProps {
     productId:string;
     imgUrl:string;
@@ -14,9 +16,11 @@ interface CardProps {
     price:number;
     page: "cart" | "bookmarks";
     quantity?:number;
+    inBookmarks:boolean;
 }
 export default function CartProductCard(props:CardProps) {
     const { mutate } = useSWRConfig();
+    const [added, setAdded] = useState<boolean>(props.inBookmarks);
     async function handleDelete(productId:string) {
         if(props.page == "cart") {
             await removeFromCart(productId);
@@ -28,22 +32,27 @@ export default function CartProductCard(props:CardProps) {
         }
     }
     async function handleAdd(productId:string) {
-        if(props.page == "cart") {
+        if(props.page == "cart" && added) {
+            return notify("warn", "¡El producto ya está guardado!");
+        } else if (props.page == "cart" && !added){
             const added = await addToBookmarks(productId);
-            if(added) return notify("¡El producto se guardó correctamente!")
+            if(added) {
+                setAdded(true);
+                return notify("success", "¡El producto se guardó correctamente!")
+            } 
         }
         if(props.page == "bookmarks") {
             const added = await addToCart(productId);
-            if(added) return notify("¡El producto se agregó al carrito correctamente!")
+            if(added) return notify("success", "¡El producto se agregó al carrito correctamente!")
         }
     }
     return (
         <div className={styles["card"]}>
-            <div className={styles["img-container"]}>
+            <div className={styles["img-container"]} onClick={()=>Router.push(`/item/${props.productId}`)}>
                 <img className={styles["img"]} src={props.imgUrl} alt="product.jpg" />
             </div>
             <div className={styles["info"]}>
-                <Body size="xs" fontWeight="bold" className={styles["product__title"]} talign="left">{props.title}</Body>
+                <Body onClick={()=>Router.push(`/item/${props.productId}`)} size="xs" fontWeight="bold" className={styles["product__title"]} talign="left">{props.title}</Body>
                 {props.page == "cart" ? <Body size="xs" fontWeight="bold" className={styles["product__quantity"]} talign="right">({props.quantity})</Body> : null}
                 <div className={styles["buttons-container"]}>
                     <CartButtons onClick={()=>{handleDelete(props.productId)}}>Eliminar</CartButtons>

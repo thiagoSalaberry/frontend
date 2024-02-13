@@ -52,8 +52,8 @@ export default function CheckoutPage() {
       <div className={styles["checkout-page"]}>
         <Label>Elegí la forma de entrega</Label>
         {/* {delivery} */}
-        <DeliveryCard delivery="delivery" address={user?.userData?.address} department={user?.userData?.department}></DeliveryCard>
-        <DeliveryCard delivery="pickup"></DeliveryCard>
+        <DeliveryCard name="option" delivery="delivery" address={user?.userData?.address} department={user?.userData?.department}/>
+        <DeliveryCard name="option" delivery="pickup"/>
       </div>
     </LayoutComp>
   )

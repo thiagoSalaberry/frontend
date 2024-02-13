@@ -11,6 +11,10 @@ import { useEffect, useState } from "react";
 export default function CartPage() {
   const user = useMe();
   const userCart:ProductProps[] = user?.userData?.cart;
+  const bookmarkedProducts = user?.userData?.bookmarks;
+  function isBookmarked(productId:string):boolean {
+    return bookmarkedProducts?.some((bookmarksProd:ProductProps) => bookmarksProd.productId == productId);
+  }
   const [duplicated, setDuplicated] = useState([]);
   useEffect(()=>{
     if(userCart){
@@ -49,7 +53,7 @@ export default function CartPage() {
               <Label style={{textAlign: "center"}}>Tu carrito de compras</Label>
               {duplicated?.map(prod => {
                 const {productId, productImg, productTitle, productUnitPrice, quantity} = prod;
-                return <CartProductCard key={productId} page="cart" productId={productId} imgUrl={productImg} title={productTitle} price={productUnitPrice} quantity={quantity}/>
+                return <CartProductCard key={productId} inBookmarks={isBookmarked(productId)} page="cart" productId={productId} imgUrl={productImg} title={productTitle} price={productUnitPrice} quantity={quantity}/>
               })}
             </div>
           )}

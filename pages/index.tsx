@@ -28,7 +28,7 @@ export default function HomePage() {
     <LayoutComp user={user ? user : false}>
       <main className={styles["home-page"]}>
         <div className={styles["welcome"]}>
-          <Body>Nombre del commit: guardados</Body>
+          <Body>Nombre del commit: checkout</Body>
           <Title>TEOXYS SHOP</Title>
           <SearcherComp type="text" name="query" placeholder="Encontrá tu producto acá..."/>
         </div>

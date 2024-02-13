@@ -52,7 +52,6 @@ export default function Card(props:CardProps) {
                 </div>
                 {props.user ? <button onClick={handleClick} className={styles["icon"]}>{added ? <BookmarkFillIcon size="18"/> : <BookmarkIcon size="18"/>}</button> : null}
             </div>
-            <ToastContainer/>
         </div>
     )
 }
