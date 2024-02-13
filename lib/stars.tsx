@@ -2,22 +2,34 @@ import { StarIcon } from "@/ui/icons/star";
 import { StarHalfFillIcon } from "@/ui/icons/star-half-fill";
 import { StarFillIcon } from "@/ui/icons/star-fill";
 
-export const showStars = (n: number): number[] => {
-  const initialArray = new Array(5).fill(<StarIcon size="12"/>);
-  if (isInteger(n)) {
-    for (let i = 0; i < n; i++) {
-      initialArray[i] = <StarFillIcon size="12"/>;
-    }
-  } else {
-    for (let i = 0; i < Math.floor(n); i++) {
-      initialArray[i] = <StarFillIcon size="12"/>;
-    }
-    initialArray[Math.floor(n)] = <StarHalfFillIcon size="12"/>;
-    initialArray[Math.floor(n) + 1] = <StarIcon size="12"/>;
-    if (Math.floor(n) === 4) initialArray.pop();
-  }
-  return initialArray;
-};
-const isInteger = (n: number): boolean => {
+const isInteger = (n: number) => {
   return n % 1 === 0;
+};
+
+const getStars = (number: 0 | 0.5 | 1, index: number):JSX.Element => {
+  switch(number) {
+    case 0:
+      return <StarIcon key={index} size="12"/>;
+    case 0.5:
+      return <StarHalfFillIcon key={index} size="12"/>;
+    case 1:
+      return <StarFillIcon key={index} size="12"/>;
+  }
+};
+
+export const showStars = (rating: number) => {
+  if(rating > 5 || rating < 0) {
+    throw new Error("El puntaje debe estar entre 0 y 5");
+  };
+  const result = [];
+  const fullStars = new Array(Math.floor(rating)).fill(1);
+  if(isInteger(rating)) {
+    const emptyStars = new Array(5 - rating).fill(0);
+    result.push(...fullStars, ...emptyStars);
+  } else {
+    fullStars.push(0.5);
+    const emptyStars = new Array(5 - Math.floor(rating) - 1).fill(0);
+    result.push(...fullStars, ...emptyStars)
+  }
+  return result.map((star, index) => getStars(star, index)); //rating == 3.5 => result = [1, 1, 1, 0.5, 0]
 };

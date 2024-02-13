@@ -2,11 +2,14 @@ import styles from "./cards.module.css";
 import { Label, Body } from "@/ui/text";
 import { IconButtons } from "@/ui/buttons";
 import { LikeIcon } from "@/ui/icons/like";
+import { BookmarkIcon } from "@/ui/icons/bookmark";
+import { BookmarkFillIcon } from "@/ui/icons/bookmark-fill";
 import { showStars } from "@/lib/stars";
 import { notify } from "@/lib/notify";
-import { addToBookmarks } from "@/lib/api-calls";
+import { addToBookmarks, removeFromBookmarks } from "@/lib/api-calls";
 import { ToastContainer } from "react-toastify";
 import Router from "next/router";
+import { useState } from "react";
 interface CardProps {
     productId:string;
     title:string;
@@ -17,11 +20,19 @@ interface CardProps {
     reviews?:number;
     stock?: "true" | "false"
     user:boolean;
+    inCart?: boolean | undefined;
+    inBookmarks: boolean;
 }
 export default function Card(props:CardProps) {
+    const [added, setAdded] = useState<boolean>(props.inBookmarks);
     async function handleClick() {
-        const added = await addToBookmarks(props.productId);
-        if(added) return notify("¡El producto se guardó correctamente!");
+        if(added) {
+            const remove = await removeFromBookmarks(props.productId);
+            if(remove) setAdded(false);
+        } else {
+            const add = await addToBookmarks(props.productId);
+            if(add) setAdded(true);
+        }
     }
     const stars = showStars(props.rating!);
     return (
@@ -39,7 +50,7 @@ export default function Card(props:CardProps) {
                     </div>
                     <Body color="grey">({props.reviews})</Body>
                 </div>
-                {props.user ? <IconButtons onClick={handleClick} style={{alignSelf: "end"}}><LikeIcon size="14"/></IconButtons> : null}
+                {props.user ? <button onClick={handleClick} className={styles["icons"]}>{added ? <BookmarkFillIcon size="18"/> : <BookmarkIcon size="18"/>}</button> : null}
             </div>
             <ToastContainer/>
         </div>

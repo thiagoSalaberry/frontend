@@ -30,7 +30,7 @@ export default function BigCard(props:CardProps) {
             Router.push(`/checkout/${propductId}`)
         }
     }
-    const stars = showStars(props.rating!);
+    const stars = showStars(props.rating ? props.rating : 0);
     return (
         <div className={styles["card"]}>
             <Subtitle className={styles["product__title"]}>{props.title}</Subtitle>
@@ -41,7 +41,7 @@ export default function BigCard(props:CardProps) {
             <Body className={styles["product__stock"]} size="s" fontWeight="normal" color="grey">{props.stock == "true" ? "Stock disponible" : "No hay stock"}</Body>
             <div className={styles["rate"]}>
                 <div className={styles["stars"]}>
-                    {stars}
+                        {stars}
                 </div>
                 <Body color="grey">({props.reviews})</Body>
             </div>

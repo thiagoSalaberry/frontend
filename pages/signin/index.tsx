@@ -30,7 +30,7 @@ export default function SigninPage() {
             localStorage.setItem("accessToken", token);
             const user = await useToken(token);
             if(user) {
-                Router.push("/")
+                Router.back();
             }
         }
     }

@@ -6,13 +6,28 @@ import styles from "./search.module.css";
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { SearcherComp } from "@/components/searcher";
-export default function HomePage() {
+type ProductProps = {
+  productId: string;
+  title: string;
+  description: string;
+  unit_price: number;
+  stock: "true" | "false";
+  category: string;
+  images: string;
+  rating: number;
+  reviews: number;
+};
+export default function SearchPage() {
   const user = useMe();
   const params = useSearchParams();
   const q = params.get("q");
   const offset = params.get("offset");
   const limit = params.get("limit");
   const foundProducts = useSearchProducts(q ? String(q): "",offset ? String(offset) : "0", limit ? String(limit) : "0");
+  const bookmarkedProducts = user?.userData?.bookmarks;
+  function isBookmarked(productId:string):boolean {
+    return bookmarkedProducts.some((bookmarksProd:ProductProps) => bookmarksProd.productId == productId)
+  }
   const resultsLength = foundProducts?.results.length || 0;
   const results = (q || offset || limit) && foundProducts && resultsLength > 0 ? (
         <Body size="s" color="grey">{resultsLength} resultados de {foundProducts?.pagination.total}</Body>
@@ -35,9 +50,7 @@ export default function HomePage() {
         <div className={styles["cards-container"]}>
           {foundProducts?.results?.map(prod => {
             return (
-              // <Link className={styles["link"]} key={prod.productId} href={`/item/${prod.productId}`}>
-                <Card user={user} productId={prod.productId} title={prod.title} unit_price={prod.unit_price} imgUrl={prod.images} stock={prod.stock} desc={prod.description} rating={prod.rating} reviews={prod.reviews}/>
-              // </Link>
+              <Card inBookmarks={isBookmarked(prod.productId)} key={prod.productId} user={user} productId={prod.productId} title={prod.title} unit_price={prod.unit_price} imgUrl={prod.images} stock={prod.stock} desc={prod.description} rating={prod.rating} reviews={prod.reviews}/>
             )
           })}
         </div>

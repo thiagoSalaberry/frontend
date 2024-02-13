@@ -3,7 +3,7 @@ import BigCard from "@/components/big-card"
 import styles from "./item.module.css";
 import { useMe, useProduct } from "@/lib/hooks";
 import { useParams } from "next/navigation";
-import { SearcherComp } from "@/components/searcher"
+import { SearcherComp } from "@/components/searcher";
 export default function HomePage() {
   const user = useMe()
   const params = useParams();

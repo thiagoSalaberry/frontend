@@ -41,7 +41,40 @@
     flex-direction: column;
 }
 .input-container {
+    display: flex;
+    flex-direction: column;
     gap: 5px;
     width: 100%;
     padding: 0;
+}
+/*  */
+.wrapper {
+    width: 100%;
+    background-color: var(--fondo);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: -5px -5px 10px 0 rgba(255, 255, 255, 1),  5px 5px 10px 0 rgba(0, 0, 0, .15);
+}
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+.button {
+    width: fit-content;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+.submit {
+    background-color: rgb(112, 190, 227);
+}
+.cancel {
+    background-color: rgb(238, 99, 99);
 }

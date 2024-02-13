@@ -6,14 +6,29 @@ import styles from "./home.module.css";
 import Link from "next/link";
 import { SearcherComp } from "@/components/searcher";
 import { useEffect, useState } from "react";
+type ProductProps = {
+  productId: string;
+  title: string;
+  description: string;
+  unit_price: number;
+  stock: "true" | "false";
+  category: string;
+  images: string;
+  rating: number;
+  reviews: number;
+};
 export default function HomePage() {
   const user = useMe();
   const featuredProducts = useFeaturedProducts();
+  const bookmarkedProducts = user?.userData?.bookmarks;
+  function isBookmarked(productId:string):boolean {
+    return bookmarkedProducts.some((bookmarksProd:ProductProps) => bookmarksProd.productId == productId) ? true : false
+  }
   return (
     <LayoutComp user={user ? user : false}>
       <main className={styles["home-page"]}>
         <div className={styles["welcome"]}>
-          <Body>Nombre del commit: checkout</Body>
+          <Body>Nombre del commit: bookmarks y stars</Body>
           <Title>TEOXYS SHOP</Title>
           <SearcherComp type="text" name="query" placeholder="Encontrá tu producto acá..."/>
         </div>
@@ -22,9 +37,7 @@ export default function HomePage() {
           <div className={styles["cards-container"]}>
             {featuredProducts?.map(prod => {
               return (
-                // <Link className={styles["link"]} key={prod.productId} href={`/item/${prod.productId}`}>
-                  <Card key={prod.productId} productId={prod.productId} user={user} title={prod.title} unit_price={prod.unit_price} imgUrl={prod.images} rating={prod.rating} reviews={prod.reviews}/>
-                // </Link>
+                <Card inBookmarks={isBookmarked(prod.productId)} inCart={false} key={prod.productId} productId={prod.productId} user={user} title={prod.title} unit_price={prod.unit_price} imgUrl={prod.images} rating={prod.rating} reviews={prod.reviews}/>
               )
             })}
           </div>

@@ -8,11 +8,12 @@ import { useSWRConfig } from "swr";
 import { ToastContainer } from "react-toastify";
 import { notify } from "@/lib/notify";
 interface CardProps {
+    productId:string;
+    imgUrl:string;
     title:string;
     price:number;
-    imgUrl:string;
-    productId:string;
     page: "cart" | "bookmarks";
+    quantity?:number;
 }
 export default function CartProductCard(props:CardProps) {
     const { mutate } = useSWRConfig();
@@ -43,11 +44,12 @@ export default function CartProductCard(props:CardProps) {
             </div>
             <div className={styles["info"]}>
                 <Body size="xs" fontWeight="bold" className={styles["product__title"]} talign="left">{props.title}</Body>
+                {props.page == "cart" ? <Body size="xs" fontWeight="bold" className={styles["product__quantity"]} talign="right">({props.quantity})</Body> : null}
                 <div className={styles["buttons-container"]}>
                     <CartButtons onClick={()=>{handleDelete(props.productId)}}>Eliminar</CartButtons>
                     <CartButtons onClick={()=>handleAdd(props.productId)}>{props.page == "cart" ? "Guardar" : "Agregar al carrito"}</CartButtons>
                 </div>
-                <Body className={styles["product__price"]} size="m" fontWeight="bold">${props.price?.toLocaleString()}</Body>
+                <Body className={styles["product__price"]} size="m" fontWeight="bold">${props.page == "cart" ? (props.price * props.quantity!).toLocaleString() : props.price.toLocaleString()}</Body>
             </div>
             <ToastContainer/>
         </div>
