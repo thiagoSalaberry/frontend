@@ -16,11 +16,11 @@ interface CardProps {
     price:number;
     page: "cart" | "bookmarks";
     quantity?:number;
-    inBookmarks:boolean;
+    inBookmarks?:boolean;
 }
 export default function CartProductCard(props:CardProps) {
     const { mutate } = useSWRConfig();
-    const [added, setAdded] = useState<boolean>(props.inBookmarks);
+    const [added, setAdded] = useState<boolean>(props.inBookmarks!);
     async function handleDelete(productId:string) {
         if(props.page == "cart") {
             await removeFromCart(productId);
