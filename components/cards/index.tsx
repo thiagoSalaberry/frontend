@@ -50,7 +50,7 @@ export default function Card(props:CardProps) {
                     </div>
                     <Body color="grey">({props.reviews})</Body>
                 </div>
-                {props.user ? <button onClick={handleClick} className={styles["icons"]}>{added ? <BookmarkFillIcon size="18"/> : <BookmarkIcon size="18"/>}</button> : null}
+                {props.user ? <button onClick={handleClick} className={styles["icon"]}>{added ? <BookmarkFillIcon size="18"/> : <BookmarkIcon size="18"/>}</button> : null}
             </div>
             <ToastContainer/>
         </div>

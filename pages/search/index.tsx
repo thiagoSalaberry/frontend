@@ -26,7 +26,7 @@ export default function SearchPage() {
   const foundProducts = useSearchProducts(q ? String(q): "",offset ? String(offset) : "0", limit ? String(limit) : "0");
   const bookmarkedProducts = user?.userData?.bookmarks;
   function isBookmarked(productId:string):boolean {
-    return bookmarkedProducts.some((bookmarksProd:ProductProps) => bookmarksProd.productId == productId)
+    return bookmarkedProducts?.some((bookmarksProd:ProductProps) => bookmarksProd.productId == productId)
   }
   const resultsLength = foundProducts?.results.length || 0;
   const results = (q || offset || limit) && foundProducts && resultsLength > 0 ? (

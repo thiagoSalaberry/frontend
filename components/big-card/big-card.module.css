@@ -18,6 +18,22 @@
     height: 100%;
     object-fit: contain;
 }
+.product__price {
+    display: flex;
+    justify-content: space-between;
+}
+.icon {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: flex-start;
+    justify-self: flex-end;
+    background: none;
+    border: none;
+    margin-top: 5px;
+}
+.icon:active {
+    transform: scale(.8);
+} 
 .stars {
     display: flex;
     align-items: center;
