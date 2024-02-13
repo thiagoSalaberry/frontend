@@ -45,7 +45,7 @@ export default function BigCard(props:CardProps) {
             Router.push("/signin")
         } else if(props.user && action == "addToCart") {
             const added = await addToCart(propductId);
-            if(added) return notify("¡El producto se agregó al carrito correctamente!");
+            if(added) return notify("success", "¡El producto se agregó al carrito correctamente!");
         } else if(props.user && action ==  "buy"){
             Router.push(`/checkout/${propductId}`)
         }
