@@ -12,6 +12,12 @@ type ProductProps = {
   rating: number;
   reviews: number;
 };
+type OrderData = {
+  productData: object[];
+  shipping_info: object;
+  status: string;
+  userId: string;
+};
 export function useMe() {
   const { data, error } = useSWR(
     "/me",
@@ -53,6 +59,9 @@ export function useFeaturedProducts() {
   if (data) return data.featuredProducts as Array<ProductProps>;
 }
 
-// export function useCartProducts() {
-//   const {data, error} = useSWR("/")
-// }
+export function useOrder(orderId: string) {
+  const { data, error } = useSWR(`/me/orders/${orderId}`, fetchAPI2);
+  if (data) {
+    return data;
+  }
+}

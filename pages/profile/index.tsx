@@ -15,8 +15,13 @@ export default function ProfilePage() {
                 name: e.target.name.value || user?.userData?.name,
                 last_name: e.target.last_name.value || user?.userData?.last_name,
                 phone: e.target.phone.value || user?.userData?.phone,
-                address: e.target.address.value || user?.userData?.address,
-                department: e.target.department.value || user?.userData?.department
+                address: {
+                    street_name: e.target.street_name.value || user?.userData?.street_name,
+                    street_number: e.target.street_number.value || user?.userData?.street_number,
+                    department: e.target.department.value || user?.userData?.department,
+                    city: e.target.city.value || user?.userData?.city,
+                    zip_code: e.target.zip_code.value || user?.userData?.zip_code,
+                }
             }
         });
         Router.reload();
@@ -36,12 +41,24 @@ export default function ProfilePage() {
                 <Input type="number" name="phone" placeholder={user?.userData?.phone ? user.userData.phone : "Tu celular"}/>
             </div>
             <div className={styles["input-container"]}>
-                <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Dirección</Body>
-                <Input type="text" name="address" placeholder={user?.userData?.address ? user.userData.address : "Tu dirección"}/>
+                <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Calle</Body>
+                <Input type="text" name="street_name" placeholder={user?.userData?.address?.street_name ? user.userData.address.street_name : "Tu calle"}/>
+            </div>
+            <div className={styles["input-container"]}>
+                <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Altura</Body>
+                <Input type="text" name="street_number" placeholder={user?.userData?.address?.street_number ? user.userData.address.street_number : "La altura de tu casa"}/>
             </div>
             <div className={styles["input-container"]}>
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Piso y departamento</Body>
-                <Input type="text" name="department" placeholder={user?.userData?.department ? user.userData.department : "Tu piso y departamento"}/>
+                <Input type="text" name="department" placeholder={user?.userData?.address?.department ? user.userData.address.department : "Tu piso y departamento"}/>
+            </div>
+            <div className={styles["input-container"]}>
+                <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Ciudad</Body>
+                <Input type="text" name="city" placeholder={user?.userData?.address?.city ? user.userData.address.city : "Tu ciudad"}/>
+            </div>
+            <div className={styles["input-container"]}>
+                <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Código postal</Body>
+                <Input type="number" name="zip_code" placeholder={user?.userData?.address?.zip_code ? user.userData.address.zip_code : "Tu código postal"}/>
             </div>
             <Button>Cargar datos</Button>
         </form>

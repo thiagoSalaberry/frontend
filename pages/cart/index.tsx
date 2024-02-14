@@ -20,7 +20,12 @@ export default function CartPage() {
     if(userCart){
       setDuplicated(containsDuplicate(userCart));
     }
-  }, [userCart])
+  }, [userCart]);
+  console.log({userCart})
+  function goToCheckout() {
+    const ids = duplicated.map((item:ProductProps) => item.productId).join(",");
+    Router.push(`/cart/buy?items=${ids}`);
+  }
   const emptyCart = (
     <div className={styles["empty-cart"]}>
         <img className={styles["img"]} src="shopping-bags2.png" alt="shopping-bag.png" />
@@ -32,7 +37,7 @@ export default function CartPage() {
     <div className={styles["cart-total"]}>
         <div className={styles["cart-total-products"]}>
             <Body size="m">Productos ({userCart?.length})</Body>
-            <Body size="m">${(userCart?.map(prod => prod.unit_price).reduce((acc, cv) => acc + cv, 0))?.toLocaleString()}</Body>
+            <Body size="m">${(userCart?.map(prod => prod.unit_price * prod.quantity!).reduce((acc, cv) => acc + cv, 0))?.toLocaleString()}</Body>
         </div>
         <div className={styles["cart-total-products"]}>
             <Body size="m">Envío</Body>
@@ -40,25 +45,25 @@ export default function CartPage() {
         </div>
         <div className={styles["cart-total-products"]}>
             <Body size="l" fontWeight="bold">Total</Body>
-            <Body size="l" fontWeight="bold">${(userCart?.map(prod => prod.unit_price).reduce((acc, cv) => acc + cv, 0))?.toLocaleString()}</Body>
+            <Body size="l" fontWeight="bold">${(userCart?.map(prod => prod.unit_price * prod.quantity!).reduce((acc, cv) => acc + cv, 0))?.toLocaleString()}</Body>
         </div>
-        <Button onClick={()=>{}}>Continuar Compra</Button>
+        <Button onClick={goToCheckout}>Continuar Compra</Button>
     </div>
   );
   return (
     <LayoutComp user={user ? user : false}>
         <main className={styles["cart-page"]}>
-          {duplicated?.length == 0 ? emptyCart : (
+          {userCart?.length == 0 ? emptyCart : (
             <div className={styles["cart-products-container"]}>
               <Label style={{textAlign: "center"}}>Tu carrito de compras</Label>
-              {duplicated?.map(prod => {
-                const {productId, productImg, productTitle, productUnitPrice, quantity} = prod;
-                return <CartProductCard key={productId} inBookmarks={isBookmarked(productId)} page="cart" productId={productId} imgUrl={productImg} title={productTitle} price={productUnitPrice} quantity={quantity}/>
+              {userCart?.map(prod => {
+                const {productId, images, title, unit_price, quantity} = prod;
+                return <CartProductCard key={productId} inBookmarks={isBookmarked(productId)} page="cart" productId={productId} imgUrl={images} title={title} price={unit_price} quantity={quantity}/>
               })}
             </div>
           )}
         </main>
-        {duplicated?.length !== 0 ? total : null}
+        {userCart?.length !== 0 ? total : null}
     </LayoutComp>
   )
 }

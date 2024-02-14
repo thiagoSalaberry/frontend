@@ -1,0 +1,96 @@
+.checkout-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 100px 10px;
+    gap: 20px;
+}
+.delivery-card, .test-data-card, .success-card {
+    background: var(--fondo);
+    width: 100%;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto;
+    padding: 20px;
+    gap: 20px;
+    box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.9), 5px 5px 10px 0px rgba(44, 45, 46, 0.15);
+}
+.test-data-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.test-data {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(7, auto);
+    text-align: left;
+    border-left: 1px solid rgba(44, 45, 46, 0.15);
+    border-top: 1px solid rgba(44, 45, 46, 0.15);
+    width: 100%;
+}
+.row-name {
+    grid-column: 1;
+    border-right: 1px solid rgba(44, 45, 46, 0.15);
+    border-bottom: 1px solid rgba(44, 45, 46, 0.15);
+    padding: 5px;
+}
+.row-value {
+    grid-column: 2;
+    padding: 5px;
+    border-right: 1px solid rgba(44, 45, 46, 0.15);
+    border-bottom: 1px solid rgba(44, 45, 46, 0.15);
+    display: flex;
+    justify-content: space-between;
+}
+.clip-btn {
+    background: none;
+    border: none;
+    color: #1e47a7;
+}
+.edit-delivery {
+    grid-column: 1;
+    grid-row: 3;
+}
+.link-card {
+    width: 100%;
+    background: rgba(110, 110, 110, 0.15);
+    border: solid 1px rgba(44, 45, 46, 0.15);
+    border-radius: 5px;
+}
+.payment-link {
+    padding: 5px;
+}
+.link-container {
+    max-width: 100%;
+    /* max-height: 35px; */
+    overflow-x: auto;
+    background: white;
+    padding: 5px;
+    border-radius: 0 0 5px 5px;
+}
+.link {
+    white-space: nowrap;
+    display: inline-block;
+}
+.payment-link {
+    display: flex;
+    justify-content: space-between;
+}
+.success-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.success-icon {
+    color: rgb(92, 201, 92);
+}
+.success-msg {
+    text-align: center;
+}

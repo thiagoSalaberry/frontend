@@ -8,4 +8,5 @@ export type ProductProps = {
   images: string;
   rating: number;
   reviews: number;
+  quantity?: number;
 };

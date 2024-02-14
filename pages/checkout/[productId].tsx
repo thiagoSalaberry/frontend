@@ -8,6 +8,7 @@ import styles from "./checkout.module.css";
 import { useMe, useProduct } from "@/lib/hooks";
 import { useParams } from "next/navigation";
 import { SearcherComp } from "@/components/searcher"
+import { generateNewOrder } from "@/lib/api-calls"
 import { useState } from "react";
 import DeliveryCard from "@/components/delivery-card"
 type CheckoutPageProps = {
@@ -15,45 +16,27 @@ type CheckoutPageProps = {
 }
 export default function CheckoutPage() {
   const user = useMe();
-  const [address, setAddress] = useState<boolean>(user?.userData?.address);
   const params = useParams();
-  function handleForm(e:any) {
-    e.preventDefault();
+  async function handleClick() {
+    const productId = String(params.productId);
+    const {street_name, street_number, department, city, zip_code} = user.userData.address;
+    const shipping_info = {
+      street_name,
+      street_number,
+      zip_code
+    };
+    const newOrder = await generateNewOrder(productId, shipping_info);
+    if(newOrder) {
+      console.log("Este sería el link",newOrder)
+    }
   };
-  const delivery = (
-    <div className={styles["delivery-card"]}>
-        <Body className={styles["delivery"]} size="m">Enviar a domicilio</Body>
-        <Body className={styles["delivery-price"]} size="m">¡Gratis!</Body>
-        {!address ? (
-          <form className={styles["address-form"]}>
-            <div className={styles["input-container"]}>
-                <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Dirección</Body>
-                <Input type="text" name="address"/>
-            </div>
-            <div className={styles["input-container"]}>
-                <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Localidad</Body>
-                <Input type="text" name="city"/>
-            </div>
-            <div className={styles["input-container"]}>
-                <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Código postal</Body>
-                <Input type="number" name="zip-code"/>
-            </div>
-            <div className={styles["input-container"]}>
-                <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Piso y departamento</Body>
-                <Input type="text" name="department"/>
-            </div>
-          </form>
-        ) : <Body>{user.userData.address} - {user.userData.department}</Body>}
-        <Body className={styles["edit-delivery"]}>Editar o elegir otro domicilio</Body>
-    </div>
-  )
   return (
     <LayoutComp user={user ? user : false}>
       <div className={styles["checkout-page"]}>
         <Label>Elegí la forma de entrega</Label>
-        {/* {delivery} */}
         <DeliveryCard name="option" delivery="delivery" address={user?.userData?.address} department={user?.userData?.department}/>
         <DeliveryCard name="option" delivery="pickup"/>
+        <Button onClick={handleClick}>Continuar</Button>
       </div>
     </LayoutComp>
   )

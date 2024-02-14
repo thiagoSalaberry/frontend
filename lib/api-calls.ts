@@ -157,3 +157,42 @@ export async function removeFromBookmarks(productId: string) {
   const data = await response.json();
   return data;
 }
+
+export async function generateNewOrder(
+  productId: string,
+  shipping_info: object
+) {
+  const response = await fetch(
+    `https://desafio-e-commerce-five.vercel.app/api/order?productId=${productId}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ shipping_info }),
+    }
+  );
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
+export async function generateNewCartOrder(
+  productIds: string,
+  shipping_info: object
+) {
+  const response = await fetch(
+    `https://desafio-e-commerce-five.vercel.app/api/order/cart?items=${productIds}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ shipping_info }),
+    }
+  );
+  const data = await response.json();
+  console.log(data);
+  return data;
+}

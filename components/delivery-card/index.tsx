@@ -4,7 +4,13 @@ import { Body } from "@/ui/text";
 import { useMe } from "@/lib/hooks";
 interface DeliveryCardProps {
     delivery: "delivery" | "pickup";
-    address?: string;
+    address?: {
+        street_name:string;
+        street_number:number;
+        department:string;
+        city:string;
+        zip_code:string;
+    };
     department?: string;
     name:string;
 }
@@ -13,14 +19,15 @@ export default function DeliveryCard(props:DeliveryCardProps) {
     const [open, setOpen] = useState(false);
     const [submited, setSubmited] = useState(false);
     const [initialAddress, setInitialAddress] = useState({
-        address: "Tu domicilio",
-        department: "1°A",
-        city: "Paris"
+        street_name:"Tu domicilio",
+        street_number:"123",
+        department:"1°A",
+        city:"Paris"
     });
     const [displayedAddress, setDisplayedAddress] = useState<string>("");
     useEffect(()=>{
-        setDisplayedAddress(!user?.userData?.address ? `${initialAddress.address}, ${initialAddress.department} - ${initialAddress.city}` : user?.userData?.address);
-    }, []);
+        setDisplayedAddress(user ? `${user.userData.address.street_name} ${user.userData.address.street_number}, ${user.userData.address.department} - ${user.userData.address.city}` : `${initialAddress.street_name} ${initialAddress.street_number}, ${initialAddress.department} - ${initialAddress.city}`);
+    }, [user]);
     function handleOpenClick() {
         setOpen(true)
         setSubmited(false)
