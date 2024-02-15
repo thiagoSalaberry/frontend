@@ -2,19 +2,9 @@ import styles from "./home.module.css";
 import { Title, Subtitle, Body } from "@/ui/text";
 import { useMe, useFeaturedProducts } from "@/lib/hooks";
 import Card from "@/components/cards";
-import { LayoutComp } from "@/components/layout"
+import { LayoutComp } from "@/components/layout";
+import { ProductProps } from "@/lib/types";
 import { SearcherComp } from "@/components/searcher";
-type ProductProps = {
-  productId: string;
-  title: string;
-  description: string;
-  unit_price: number;
-  stock: "true" | "false";
-  category: string;
-  images: string;
-  rating: number;
-  reviews: number;
-};
 export default function HomePage() {
   const user = useMe();
   const featuredProducts = useFeaturedProducts();
@@ -32,7 +22,7 @@ export default function HomePage() {
         <div className={styles["destacados"]}>
           <Subtitle>PRODUCTOS DESTACADOS</Subtitle>
           <div className={styles["cards-container"]}>
-            {featuredProducts?.map(prod => {
+            {featuredProducts?.map((prod:ProductProps) => {
               return (
                 <Card inBookmarks={isBookmarked(prod.productId)} inCart={false} key={prod.productId} productId={prod.productId} user={user} title={prod.title} unit_price={prod.unit_price} imgUrl={prod.images} rating={prod.rating} reviews={prod.reviews}/>
               )

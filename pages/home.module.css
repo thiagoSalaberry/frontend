@@ -25,6 +25,12 @@
     align-items: center;
     gap: 15px;
 }
+@media (min-width: 1280px) {
+    .cards-container {
+        flex-direction: row;
+        gap: 50px;
+    }
+}
 .link {
     text-decoration: none;
     color: black;

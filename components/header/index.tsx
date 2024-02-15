@@ -3,7 +3,9 @@ import { CartIcon } from "@/ui/icons/cart";
 import { XIcon } from "@/ui/icons/x";
 import { Body } from "@/ui/text";
 import Link from "next/link";
+import { PersonIcon } from "@/ui/icons/person";
 import { BackButton } from "@/ui/buttons";
+import { BookmarkIcon } from "@/ui/icons/bookmark";
 import Router from "next/router";
 import { useState } from "react";
 type HeaderProp = {
@@ -42,7 +44,38 @@ export function HeaderComp(props:HeaderProp) {
                     <div className={styles["logo-h"]}></div>
                 </div>
             </Link>
+            <nav className={styles["catalog"]}>
+                <Link className={styles["link"]} href={"/search?q=buzos&offset=10&limit=10"}>
+                    <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>BUZOS</Body>
+                </Link>
+                <Link className={styles["link"]} href={"/search?q=camisas&offset=10&limit=10"}>
+                    <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>CAMISAS</Body>
+                </Link>
+                <Link className={styles["link"]} href={"/search?q=pantalones&offset=10&limit=10"}>
+                    <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>PANTALONES</Body>
+                </Link>
+                <Link className={styles["link"]} href={"/search?q=vestidos&offset=10&limit=10"}>
+                    <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>VESTIDOS</Body>
+                </Link>
+                <Link className={styles["link"]} href={"/search?q=zapatillas&offset=10&limit=10"}>
+                    <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>ZAPATILLAS</Body>
+                </Link>
+            </nav>
             <div className={styles["buttons-container"]}>
+                <button onClick={()=>{
+                    if(props.user) {
+                        Router.push("/profile")
+                    } else {
+                        Router.push("/signin")
+                    }
+                }} className={styles["person"]}><PersonIcon size="32"/></button>
+                <button onClick={()=>{
+                    if(props.user) {
+                        Router.push("/bookmarks")
+                    } else {
+                        Router.push("/signin")
+                    }
+                }} className={styles["bookmarks"]}><BookmarkIcon size="28"/></button>
                 <button onClick={()=>{
                     if(props.user) {
                         Router.push("/cart")
@@ -55,7 +88,14 @@ export function HeaderComp(props:HeaderProp) {
                     <div className={styles["bar"]}></div>
                     <div className={styles["bar"]}></div>
                 </button>
-                <div id="close-menu" className={`${styles["menu"]} ${menuOpen ? "" : styles["off"]}`}>
+                <button className={styles["log-in-out"]} onClick={()=>{
+                    if(props.user.userData?.email) {
+                        Router.push("/logout")
+                    } else {
+                        Router.push("/signin")
+                    }
+                }}>{props.user.userData?.email ? "Cerrar sesión" : "Iniciar sesión"}</button>
+                <div className={`${styles["menu"]} ${menuOpen ? "" : styles["off"]}`}>
                     <div className={styles["menu-header"]}>
                         <Link onClick={toggleMenu} href={"/"}>
                             <div className={styles["logo"]}>
@@ -68,7 +108,6 @@ export function HeaderComp(props:HeaderProp) {
                     <button onClick={toggleMenu} className={styles["cruz"]}><XIcon size="48"/></button>
                     <div className={styles["clothes-list"]}>
                         <Link onClick={()=>{
-                            console.log(location.pathname)
                             if(location.pathname.includes("/search")) {
                                 toggleMenu();
                             }
@@ -76,7 +115,6 @@ export function HeaderComp(props:HeaderProp) {
                             <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>BUZOS</Body>
                         </Link>
                         <Link onClick={()=>{
-                            console.log(location.pathname)
                             if(location.pathname.includes("/search")) {
                                 toggleMenu();
                             }
@@ -84,7 +122,6 @@ export function HeaderComp(props:HeaderProp) {
                             <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>CAMISAS</Body>
                         </Link>
                         <Link onClick={()=>{
-                            console.log(location.pathname)
                             if(location.pathname.includes("/search")) {
                                 toggleMenu();
                             }
@@ -92,7 +129,6 @@ export function HeaderComp(props:HeaderProp) {
                             <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>PANTALONES</Body>
                         </Link>
                         <Link onClick={()=>{
-                            console.log(location.pathname)
                             if(location.pathname.includes("/search")) {
                                 toggleMenu();
                             }
@@ -100,7 +136,6 @@ export function HeaderComp(props:HeaderProp) {
                             <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>VESTIDOS</Body>
                         </Link>
                         <Link onClick={()=>{
-                            console.log(location.pathname)
                             if(location.pathname.includes("/search")) {
                                 toggleMenu();
                             }
@@ -140,7 +175,6 @@ export function HeaderComp(props:HeaderProp) {
                     </div>
                     {footerContent}
                 </div>
-                <BackButton className={styles["desktop"]}>Ingresar</BackButton>
             </div>
         </header>
     )

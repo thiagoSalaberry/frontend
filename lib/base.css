@@ -43,6 +43,8 @@
     --small: 18px;
     --medium: 24px;
     --large: 30px;
+    --shadow: 0 0 0 0 rgba(44, 45, 46, 0.5) inset, 0 0 0 0 rgba(255, 255, 255, .9) inset, -1px -1px 3px 1px rgba(255, 255, 255, .9), 2px 2px 7px 0px rgba(44, 45, 46, 0.5);
+    --pressed-shadow: 2px 2px 7px 0px rgba(44, 45, 46, 0.5) inset, -1px -1px 3px 1px rgba(255, 255, 255, .9) inset;
 }
 
 body {

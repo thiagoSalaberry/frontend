@@ -6,19 +6,7 @@ import { showStars } from "@/lib/stars";
 import { addToBookmarks, removeFromBookmarks } from "@/lib/api-calls";
 import Router from "next/router";
 import { useState } from "react";
-interface CardProps {
-    productId:string;
-    title:string;
-    desc?:string;
-    unit_price:number;
-    imgUrl:string;
-    rating?:number;
-    reviews?:number;
-    stock?: "true" | "false"
-    user:boolean;
-    inCart?: boolean | undefined;
-    inBookmarks: boolean;
-}
+import { CardProps } from "@/lib/types";
 export default function Card(props:CardProps) {
     const [added, setAdded] = useState<boolean>(props.inBookmarks);
     async function handleClick() {
