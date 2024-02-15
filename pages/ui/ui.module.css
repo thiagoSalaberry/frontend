@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    padding: 50px 200px;
+    padding: 50px 20px;
 }
 .container {
     display: flex;

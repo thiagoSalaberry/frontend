@@ -47,8 +47,6 @@ export default function UI() {
         <LayoutComp user={false}>
             <section className={styles["ui-page"]}>
                 <div className={styles["container"]}>
-                    {/* <Button>Probando</Button>
-                    <BackButton>Probando</BackButton> */}
                     <button className={styles["nuevo"]}>Nuevo</button>
                     <button className={!loading ? `${styles["nuevo"]}` : `${styles[disabled]}`} onClick={handleClick} disabled={loading}>
                         {loading ? <CircularProgress color="inherit" size={20}/> : "Click acá"}
