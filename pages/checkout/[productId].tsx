@@ -23,18 +23,16 @@ export default function CheckoutPage() {
   const order = useOrder(orderId);
   const paymentStatus = order?.order?.data?.status;
   useEffect(()=>{
-    console.log("Esto ocurre cuando paymentStatus cambia", {paymentStatus});
     if(paymentStatus === "paid"){
       setPaid(true);
     }
   }, [paymentStatus]);
   async function handleClick() {
     const productId = String(params.productId);
-    const {street_name, street_number, department, city, zip_code} = user.userData.address;
     const shipping_info = {
-      street_name,
-      street_number,
-      zip_code
+      street_name: user?.userData?.address?.street_name,
+      street_number: user?.userData?.address?.street_number,
+      zip_code: user?.userData?.address?.zip_code
     };
     const newOrder = await generateNewOrder(productId, shipping_info);
     if(newOrder) {

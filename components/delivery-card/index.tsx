@@ -26,7 +26,7 @@ export default function DeliveryCard(props:DeliveryCardProps) {
     });
     const [displayedAddress, setDisplayedAddress] = useState<string>("");
     useEffect(()=>{
-        setDisplayedAddress(user ? `${user.userData.address.street_name} ${user.userData.address.street_number}, ${user.userData.address.department} - ${user.userData.address.city}` : `${initialAddress.street_name} ${initialAddress.street_number}, ${initialAddress.department} - ${initialAddress.city}`);
+        setDisplayedAddress(user.userData.address ? `${user.userData.address.street_name} ${user.userData.address.street_number}, ${user.userData.address.department} - ${user.userData.address.city}` : `${initialAddress.street_name} ${initialAddress.street_number}, ${initialAddress.department} - ${initialAddress.city}`);
     }, [user]);
     function handleOpenClick() {
         setOpen(true)
