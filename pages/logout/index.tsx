@@ -1,10 +1,5 @@
-import { LayoutComp } from "@/components/layout"
-import { Title, Body } from "@/ui/text"
-import { Button } from "@/ui/buttons"
-import { Input } from "@/ui/textfields"
-import { useMe } from "@/lib/hooks"
+import { Body } from "@/ui/text"
 import styles from "./profile.module.css"
-import { updateUserData } from "@/lib/api-calls"
 import Router from "next/router"
 import { useEffect } from "react"
 export default function LogOutPage() {

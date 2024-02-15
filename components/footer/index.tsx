@@ -1,9 +1,8 @@
+import styles from "./footer.module.css";
 import Link from "next/link";
 import {Label, Body} from "@/ui/text";
 import { TwitterXIcon } from "@/ui/icons/twitter-x";
 import { InstragramIcon } from "@/ui/icons/instagram";
-import styles from "./footer.module.css";
-import Router from "next/router";
 type FooterProp = {
     user:any;
 };

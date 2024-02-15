@@ -1,13 +1,9 @@
 import { LayoutComp } from "@/components/layout"
-import { Title, Subtitle, Body, Label } from "@/ui/text"
-import { Button, BackButton } from "@/ui/buttons"
-import Card from "@/components/cards"
-import BigCard from "@/components/big-card"
-import { Input, SecondInput } from "@/ui/textfields"
+import { Body, Label } from "@/ui/text"
+import { Button } from "@/ui/buttons"
 import styles from "./checkout.module.css";
-import { useMe, useProduct, useOrder } from "@/lib/hooks";
+import { useMe, useOrder } from "@/lib/hooks";
 import { useParams } from "next/navigation";
-import { SearcherComp } from "@/components/searcher"
 import { generateNewOrder } from "@/lib/api-calls"
 import { useState, useEffect } from "react";
 import copy from "copy-to-clipboard";
@@ -16,9 +12,6 @@ import { ClipboardCheckIcon } from "@/ui/icons/clipboard-check"
 import { ClipboardIcon } from "@/ui/icons/clipboard"
 import Router from "next/router";
 import DeliveryCard from "@/components/delivery-card"
-type CheckoutPageProps = {
-  address:boolean;
-}
 export default function CheckoutPage() {
   const user = useMe();
   const params = useParams();

@@ -1,15 +1,11 @@
 import styles from "./header.module.css";
 import { CartIcon } from "@/ui/icons/cart";
-import { PersonIcon } from "@/ui/icons/person";
 import { XIcon } from "@/ui/icons/x";
 import { Body } from "@/ui/text";
 import Link from "next/link";
-import { Button, BackButton } from "@/ui/buttons";
-import logo from "@/public/logo.jpg";
+import { BackButton } from "@/ui/buttons";
 import Router from "next/router";
-import { useEffect, useState } from "react";
-import { mutate } from "swr";
-import { BookmarkIcon } from "@/ui/icons/bookmark";
+import { useState } from "react";
 type HeaderProp = {
     user:any;
     menuState:false

@@ -1,8 +1,6 @@
 import styles from "./cart-cards.module.css";
-import { Label, Body } from "@/ui/text";
-import { Button, IconButtons, CartButtons } from "@/ui/buttons";
-import { LikeIcon } from "@/ui/icons/like";
-import { showStars } from "@/lib/stars";
+import { Body } from "@/ui/text";
+import { CartButtons } from "@/ui/buttons";
 import { addToCart, removeFromCart, addToBookmarks, removeFromBookmarks } from "@/lib/api-calls";
 import { useSWRConfig } from "swr";
 import Router from "next/router";

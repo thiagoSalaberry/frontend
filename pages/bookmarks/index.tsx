@@ -4,7 +4,6 @@ import { Button } from "@/ui/buttons"
 import styles from "./favs.module.css";
 import { useMe } from "@/lib/hooks";
 import Router from "next/router";
-import { LikeIcon } from "@/ui/icons/like";
 import CartProductCard from "@/components/cart-product-card"
 import {ProductProps} from "@/lib/types";
 export default function CartPage() {

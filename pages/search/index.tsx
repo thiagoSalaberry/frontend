@@ -1,8 +1,8 @@
+import styles from "./search.module.css";
 import { LayoutComp } from "@/components/layout"
 import { Body, Subtitle } from "@/ui/text"
 import Card from "@/components/cards"
 import { useMe, useSearchProducts } from "@/lib/hooks"
-import styles from "./search.module.css";
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import { SearcherComp } from "@/components/searcher";

@@ -43,6 +43,7 @@
     margin: 0;
     color: var(--black);
     cursor: pointer;
+    text-align: left;
 }
 .product__price {
     grid-column: 1;

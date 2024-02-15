@@ -1,11 +1,9 @@
+import styles from "./home.module.css";
 import { Title, Subtitle, Body } from "@/ui/text";
 import { useMe, useFeaturedProducts } from "@/lib/hooks";
 import Card from "@/components/cards";
 import { LayoutComp } from "@/components/layout"
-import styles from "./home.module.css";
-import Link from "next/link";
 import { SearcherComp } from "@/components/searcher";
-import { useEffect, useState } from "react";
 type ProductProps = {
   productId: string;
   title: string;

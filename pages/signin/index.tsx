@@ -6,9 +6,7 @@ import styles from "./signin.module.css";
 import Router from "next/router";
 import { sendCode, getToken, useToken } from "@/lib/api-calls";
 import { useState } from "react";
-import { useMe } from "@/lib/hooks";
 export default function SigninPage() {
-    
     const [email, setEmail] = useState("");
     const [code, setCode] = useState("");
     const [error, setError] = useState<boolean>(false);

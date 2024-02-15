@@ -1,13 +1,9 @@
 import styles from "./cards.module.css";
-import { Label, Body } from "@/ui/text";
-import { IconButtons } from "@/ui/buttons";
-import { LikeIcon } from "@/ui/icons/like";
+import { Body } from "@/ui/text";
 import { BookmarkIcon } from "@/ui/icons/bookmark";
 import { BookmarkFillIcon } from "@/ui/icons/bookmark-fill";
 import { showStars } from "@/lib/stars";
-import { notify } from "@/lib/notify";
 import { addToBookmarks, removeFromBookmarks } from "@/lib/api-calls";
-import { ToastContainer } from "react-toastify";
 import Router from "next/router";
 import { useState } from "react";
 interface CardProps {

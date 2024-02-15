@@ -5,7 +5,6 @@ import { SearchIcon } from "@/ui/icons/search";
 import { PersonIcon } from "@/ui/icons/person";
 import Card from "@/components/cards";
 import { LayoutComp } from "@/components/layout";
-import { CatalogComp } from "@/components/catalogo";
 import styles from "./ui.module.css"
 import { ToastifyComp } from "@/components/toast";
 import { useState } from "react";

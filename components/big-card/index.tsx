@@ -1,7 +1,5 @@
 import styles from "./big-card.module.css";
-import { Label, Body, Subtitle } from "@/ui/text";
-import { IconButtons } from "@/ui/buttons";
-import { LikeIcon } from "@/ui/icons/like";
+import { Body, Subtitle } from "@/ui/text";
 import { showStars } from "@/lib/stars";
 import { Button, BackButton } from "@/ui/buttons";
 import { addToCart } from "@/lib/api-calls";

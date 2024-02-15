@@ -1,7 +1,7 @@
+import styles from "./cart.module.css";
 import { LayoutComp } from "@/components/layout"
 import { Body, Label } from "@/ui/text"
 import { Button } from "@/ui/buttons"
-import styles from "./cart.module.css";
 import { useMe } from "@/lib/hooks";
 import Router from "next/router"
 import CartProductCard from "@/components/cart-product-card"
