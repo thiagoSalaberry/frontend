@@ -2,6 +2,7 @@
     background: var(--fondo);
     display: flex;
     flex-direction: column;
+    max-width: 500px;
     width: 100%;
     border-radius: 10px;
     box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.9), 5px 5px 10px 0px rgba(44, 45, 46, 0.15);
@@ -30,9 +31,14 @@
     background: none;
     border: none;
     margin-top: 5px;
+    cursor: pointer;
+    transition: all .15s;
 }
+.icon:hover {
+    transform: scale(1.15);
+} 
 .icon:active {
-    transform: scale(.8);
+    transform: scale(.85);
 } 
 .stars {
     display: flex;

@@ -13,7 +13,7 @@ export default function CartPage() {
   const emptyCart = (
     <div className={styles["empty-cart"]}>
         <img className={styles["img"]} src="marcador.png" alt="shopping-bag.png" />
-        <Body talign="center" size="m">!Guardá productos acá para comprarlos más adelante!</Body>
+        <Body talign="center" size="m">¡Guardá productos acá para comprarlos más adelante!</Body>
         <Button onClick={()=>Router.push("/search?q=&offset=0&limit=10")}>Descubrir productos</Button>
     </div>
   )

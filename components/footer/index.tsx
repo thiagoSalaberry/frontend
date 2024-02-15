@@ -11,25 +11,25 @@ export function FooterComp(props:FooterProp) {
     const routesContent = (props.user !== false ? 
         <div className={styles["routes"]}>
             <Link className={styles["link"]} href={"/profile"}>
-                <Body color="white" size="m">Mi perfil</Body>
+                <Body color="white" size="m" className={styles["pointer"]}>Mi perfil</Body>
             </Link>
             <Link className={styles["link"]} href={"/search"}>
-                <Body color="white" size="m">Buscar</Body>
+                <Body color="white" size="m" className={styles["pointer"]}>Buscar</Body>
             </Link>
             <Link className={styles["link"]} href={"/logout"}>
-                <Body color="white" size="m">Cerrar sesión</Body>
+                <Body color="white" size="m" className={styles["pointer"]}>Cerrar sesión</Body>
             </Link>
         </div>
         :
         <div className={styles["routes"]}>
             <Link className={styles["link"]} href={"/signin"}>
-                <Body color="white" size="m">Mi perfil</Body>
+                <Body color="white" size="m" className={styles["pointer"]}>Mi perfil</Body>
             </Link>
             <Link className={styles["link"]} href={"/search"}>
-                <Body color="white" size="m">Buscar</Body>
+                <Body color="white" size="m" className={styles["pointer"]}>Buscar</Body>
             </Link>
             <Link className={styles["link"]} href={"/signin"}>
-                <Body color="white" size="m">Ingresar</Body>
+                <Body color="white" size="m" className={styles["pointer"]}>Ingresar</Body>
             </Link>
         </div>
         

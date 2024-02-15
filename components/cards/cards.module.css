@@ -3,6 +3,7 @@
     /* background: rgb(213, 165, 165); */
     display: flex;
     width: 100%;
+    max-width: 500px;
     border-radius: 10px;
     height: 144px;
     box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.9), 5px 5px 10px 0px rgba(44, 45, 46, 0.15);
@@ -14,6 +15,7 @@
     max-height: 144px;
     overflow: hidden;
     border-radius: 10px 0 0 10px;
+    cursor: pointer;
 }
 .img {
     width: 100%;
@@ -34,12 +36,13 @@
     padding: 15px;
     font-size: 24px;
 } 
- .product__name {
+ .product__title {
     grid-column: 1;
     grid-row: 1;
     justify-self: flex-start;
     margin: 0;
     color: var(--black);
+    cursor: pointer;
 }
 .product__price {
     grid-column: 1;
@@ -74,7 +77,12 @@
     background: none;
     border: none;
     margin-top: 5px;
+    cursor: pointer;
+    transition: all .15s;
+}
+.icon:hover {
+    transform: scale(1.15);
 }
 .icon:active {
-    transform: scale(.8);
+    transform: scale(.85);
 } 

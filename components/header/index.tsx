@@ -23,7 +23,7 @@ export function HeaderComp(props:HeaderProp) {
         <div className={styles["footer"]}>
             <Body size="s" color="black">{props.user.userData?.email}</Body>
             <Link className={styles["link"]} href={"/logout"}>
-                <Body size="m" fontWeight="bold" color="black">Cerrar sesión</Body>
+                <Body size="m" fontWeight="bold" color="black" className={styles["pointer"]}>Cerrar sesión</Body>
             </Link>
         </div>
     ) : (
@@ -33,7 +33,7 @@ export function HeaderComp(props:HeaderProp) {
                     toggleMenu();
                 }
             }} className={styles["link"]} href={"/signin"}>
-                <Body size="m" fontWeight="bold" color="black">Iniciar sesión</Body>
+                <Body size="m" fontWeight="bold" color="black" className={styles["pointer"]}>Iniciar sesión</Body>
             </Link>
         </div>
     );
@@ -47,13 +47,6 @@ export function HeaderComp(props:HeaderProp) {
                 </div>
             </Link>
             <div className={styles["buttons-container"]}>
-                {/* <button onClick={()=>{
-                    if(props.user) {
-                        Router.push("/favs")
-                    } else {
-                        Router.push("/signin")
-                    }
-                }} className={styles["cart"]}><BookmarkIcon size="28"/></button> */}
                 <button onClick={()=>{
                     if(props.user) {
                         Router.push("/cart")
@@ -84,7 +77,7 @@ export function HeaderComp(props:HeaderProp) {
                                 toggleMenu();
                             }
                         }} className={styles["link"]} href={"/search?q=buzos&offset=10&limit=10"}>
-                            <Body size={"m"} fontWeight="bold" color="black">BUZOS</Body>
+                            <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>BUZOS</Body>
                         </Link>
                         <Link onClick={()=>{
                             console.log(location.pathname)
@@ -92,7 +85,7 @@ export function HeaderComp(props:HeaderProp) {
                                 toggleMenu();
                             }
                         }} className={styles["link"]} href={"/search?q=camisas&offset=10&limit=10"}>
-                            <Body size={"m"} fontWeight="bold" color="black">CAMISAS</Body>
+                            <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>CAMISAS</Body>
                         </Link>
                         <Link onClick={()=>{
                             console.log(location.pathname)
@@ -100,7 +93,7 @@ export function HeaderComp(props:HeaderProp) {
                                 toggleMenu();
                             }
                         }} className={styles["link"]} href={"/search?q=pantalones&offset=10&limit=10"}>
-                            <Body size={"m"} fontWeight="bold" color="black">PANTALONES</Body>
+                            <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>PANTALONES</Body>
                         </Link>
                         <Link onClick={()=>{
                             console.log(location.pathname)
@@ -108,7 +101,7 @@ export function HeaderComp(props:HeaderProp) {
                                 toggleMenu();
                             }
                         }} className={styles["link"]} href={"/search?q=vestidos&offset=10&limit=10"}>
-                            <Body size={"m"} fontWeight="bold" color="black">VESTIDOS</Body>
+                            <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>VESTIDOS</Body>
                         </Link>
                         <Link onClick={()=>{
                             console.log(location.pathname)
@@ -116,7 +109,7 @@ export function HeaderComp(props:HeaderProp) {
                                 toggleMenu();
                             }
                         }} className={styles["link"]} href={"/search?q=zapatillas&offset=10&limit=10"}>
-                            <Body size={"m"} fontWeight="bold" color="black">ZAPATILLAS</Body>
+                            <Body size={"m"} fontWeight="bold" color="black" className={styles["pointer"]}>ZAPATILLAS</Body>
                         </Link>
                     </div>
                     <div className={styles["list"]}>
@@ -125,28 +118,28 @@ export function HeaderComp(props:HeaderProp) {
                                 toggleMenu();
                             }
                         }} className={styles["link"]} href={"/"}>
-                            <Body size={"m"} color="black">Inicio</Body>
+                            <Body size={"m"} color="black" className={styles["pointer"]}>Inicio</Body>
                         </Link>
                         <Link onClick={()=>{
                             if(location.pathname == "/profile" || location.pathname == "/signin") {
                                 toggleMenu();
                             }
                         }} className={styles["link"]} href={props.user ? "/profile" : "/signin"}>
-                            <Body size={"m"} color="black">Mi perfil</Body>
+                            <Body size={"m"} color="black" className={styles["pointer"]}>Mi perfil</Body>
                         </Link>
                         <Link onClick={()=>{
                             if(location.pathname == "/bookmarks" || location.pathname == "/signin") {
                                 toggleMenu();
                             }
                         }} className={styles["link"]} href={props.user ? "/bookmarks" : "/signin"}>
-                            <Body size={"m"} color="black">Guardados</Body>
+                            <Body size={"m"} color="black" className={styles["pointer"]}>Guardados</Body>
                         </Link>
                         <Link onClick={()=>{
                             if(location.pathname == "/search") {
                                 toggleMenu();
                             }
                         }} className={styles["link"]} href={"/search"}>
-                            <Body size={"m"} color="black">Buscar</Body>
+                            <Body size={"m"} color="black" className={styles["pointer"]}>Buscar</Body>
                         </Link>
                     </div>
                     {footerContent}

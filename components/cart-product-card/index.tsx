@@ -1,4 +1,4 @@
-import styles from "./cards.module.css";
+import styles from "./cart-cards.module.css";
 import { Label, Body } from "@/ui/text";
 import { Button, IconButtons, CartButtons } from "@/ui/buttons";
 import { LikeIcon } from "@/ui/icons/like";

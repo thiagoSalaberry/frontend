@@ -11,6 +11,7 @@ export default function SigninPage() {
     
     const [email, setEmail] = useState("");
     const [code, setCode] = useState("");
+    const [error, setError] = useState<boolean>(false);
     async function getCode(e:any) {
         e.preventDefault();
         const email = e.target.email.value;
@@ -25,6 +26,9 @@ export default function SigninPage() {
         const code = e.target.code.value;
         console.log("Code que viene del getCode()", code)
         const {token} = await getToken(email, code);
+        if(!token) {
+            setError(true)
+        }
         if(token) {
             setCode(code);
             localStorage.setItem("accessToken", token);
@@ -48,7 +52,7 @@ export default function SigninPage() {
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Código</Body>
                 <Input type="number" name="code" talign="center"/>
             </div>
-            <Body size="s" color="grey" fontWeight="normal">Te envíamos un código a tu mail</Body>
+            {!error ? <Body size="s" color="grey" fontWeight="normal">Te enviamos un código a tu E-Mail</Body> : <Body size="s" color="#e44545" fontWeight="normal">El código es incorrecto</Body>}
             <Button>Ingresar</Button>
         </form>
     );

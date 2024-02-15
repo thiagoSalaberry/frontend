@@ -34,7 +34,8 @@ export async function getToken(email: string, code: number) {
     const data = await response.json();
     return data;
   } else if (response.status >= 400 && response.status < 500) {
-    throw new Error("Error de cliente llamado por getToken()");
+    // throw new Error("Error de cliente llamado por getToken()");
+    return false;
   }
 }
 export async function useToken(token: string) {

@@ -8,50 +8,55 @@ import { LayoutComp } from "@/components/layout";
 import { CatalogComp } from "@/components/catalogo";
 import styles from "./ui.module.css"
 import { ToastifyComp } from "@/components/toast";
+import { useState } from "react";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
+function CircularIndeterminate() {
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <CircularProgress />
+    </Box>
+  );
+}
+
 export default function UI() {
+    const [loading, setLoading] = useState<boolean>(false);
+    const [disabled, setDisabled] = useState<"disabled" | "">("");
+    const realizarTarea = async () => {
+        return new Promise<void>((resolve) => {
+            setTimeout(()=>{
+                console.log("La tarea se completó");
+                resolve();
+            }, 2000);
+        })
+    }
+    const handleClick = async () => {
+        if(loading) return;
+        setLoading(true);
+        setDisabled("disabled");
+        try {
+            await realizarTarea();
+        } catch(err) {
+            console.log(err);
+        } finally {
+            setLoading(false)
+        }
+    }
     return (
         <LayoutComp user={false}>
             <section className={styles["ui-page"]}>
-                {/* <div className={styles["display"]}>
-                    <Label fontWeight="normal">Botones</Label>
-                    <div className={styles["container"]}>
-                        <Button>Botón</Button>
-                        <BackButton>Botón</BackButton>
-                        <BackButton><SearchIcon size="30px"/></BackButton>
-                    </div>
+                <div className={styles["container"]}>
+                    {/* <Button>Probando</Button>
+                    <BackButton>Probando</BackButton> */}
+                    <button className={styles["nuevo"]}>Nuevo</button>
+                    <button className={!loading ? `${styles["nuevo"]}` : `${styles[disabled]}`} onClick={handleClick} disabled={loading}>
+                        {loading ? <CircularProgress color="inherit" size={20}/> : "Click acá"}
+                    </button>
+                    <button className={!loading ? `${styles["nuevo"]} ${styles["negro"]}` : `${styles[disabled]} ${styles["negro"]}`} onClick={handleClick} disabled={loading}>
+                        {loading ? <CircularProgress color="inherit" size={20}/> : "Click acá"}
+                    </button>
                 </div>
-                <div className={styles["display"]}>
-                    <Label fontWeight="normal">Textos</Label>
-                    <div className={styles["container"]}>
-                        <Title>Título</Title>
-                        <Subtitle>Título</Subtitle>
-                        <Label>Label</Label>
-                        <Label fontWeight="bold">Label</Label>
-                        <Body fontWeight="normal">Este es el body</Body>
-                        <Body fontWeight="bold" size="l">Este es el body</Body>
-                    </div>
-                </div>
-                <div className={styles["display"]}>
-                    <Label fontWeight="normal">Inputs</Label>
-                    <div className={styles["container"]}>
-                        <StyledInput type="text" placeholder={`Buscá tu producto acá...`}/>
-                    </div>
-                </div>
-                <div className={styles["display"]}>
-                    <Label fontWeight="normal">Íconos</Label>
-                    <div className={styles["container"]}>
-                        <SearchIcon size="30px"/> 
-                        <PersonIcon size="30"/>
-                    </div>
-                </div>
-                <div className={styles["display"]}>
-                    <Label fontWeight="normal">Product Cards</Label>
-                    <div className={styles["container"]}>
-                        <Card title="Mate" desc="Ideal para unos mates bien amargos." imgUrl="https://estiloaustral.com/wp-content/uploads/2023/03/0002s_0008_MATE0049-MATE-IMPERIAL-DOBLE-VIROLA-1.png.webp" rating={4} price={100}/>
-                        <Card title="Mouse" desc="Ideal para unos buenos headshots." imgUrl="https://resource.logitech.com/content/dam/gaming/en/products/pro-gaming-mouse/plasma-hero-carbon-gallery-4.png" price={500}/>
-                    </div>
-                </div> */}
-                {/* <ToastifyComp/> */}
             </section>
         </LayoutComp>
     )

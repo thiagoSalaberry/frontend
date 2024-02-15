@@ -12,6 +12,7 @@
     width: 15px;
     margin-top: 8px;
     align-self: flex-start;
+    cursor: pointer;
 }
 .info {
     display: flex;
@@ -35,6 +36,7 @@
     border: none;
     font-weight: 600;
     text-align: start;
+    cursor: pointer;
 }
 .form, .input-container {
     display: flex;

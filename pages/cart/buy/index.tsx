@@ -4,7 +4,7 @@ import { Button, BackButton } from "@/ui/buttons"
 import Card from "@/components/cards"
 import BigCard from "@/components/big-card"
 import { Input, SecondInput } from "@/ui/textfields"
-import styles from "./cart.module.css";
+import styles from "./cart-buy.module.css";
 import { useMe, useProduct, useOrder } from "@/lib/hooks";
 import { useSearchParams } from "next/navigation";
 import { SearcherComp } from "@/components/searcher"

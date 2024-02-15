@@ -13,13 +13,14 @@ interface InputProps {
 export const StyledInput = styled.input<InputProps>`
     background: var(--fondo);
     border: none;
-    box-shadow: -5px -5px 10px 0px rgba(255,255,255,1), 5px 5px 10px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 1) inset, 0 0 0 0 rgba(0,0,0,.15) inset, -5px -5px 10px 0px rgba(255,255,255,1), 5px 5px 10px 0px rgba(0, 0, 0, 0.15);
     border-radius: 100px;
     padding: 13px 20px;
     width: 100%;
     font-size: 14px;
     text-align: ${props => props.talign};
     font-weight: 500;
+    transition: all 0.1s;
     color: var(--black);
     &:focus {
         outline: none;

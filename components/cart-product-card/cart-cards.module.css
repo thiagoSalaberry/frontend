@@ -2,6 +2,7 @@
     background: var(--fondo);
     display: flex;
     width: 100%;
+    max-width: 500px;
     border-radius: 10px;
     box-shadow: -5px -5px 10px 0px rgba(255, 255, 255, 0.9), 5px 5px 10px 0px rgba(44, 45, 46, 0.15);
 }
@@ -12,6 +13,7 @@
     max-height: 100px;
     overflow: hidden;
     border-radius: 10px 0 0 10px;
+    cursor: pointer;
 }
 .img {
     width: 100%;
@@ -32,6 +34,7 @@
     grid-column: 1;
     justify-self: start;  
     align-self: center;
+    cursor: pointer;
 }
 .product__price {
     margin: 0;

@@ -52,6 +52,7 @@
     background: none;
     border: none;
     color: #1e47a7;
+    cursor: pointer;
 }
 .edit-delivery {
     grid-column: 1;

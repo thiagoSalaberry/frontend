@@ -38,7 +38,7 @@ export default function SearchPage() {
       ) : null;
   const nextPage = (q || offset || limit) && resultsLength !== 0 ? (
         <Link className={styles["link"]} href={`/search?q=${q}&offset=${parseInt(String(offset)) + 10}&limit=10`}>
-          <Body size="m">{"ver más >"}</Body>
+          <Body size="m" className={styles["ver-mas"]}>{"ver más >"}</Body>
         </Link>
       ) : null;
   return (
