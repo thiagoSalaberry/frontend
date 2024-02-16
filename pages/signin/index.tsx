@@ -40,31 +40,34 @@ export default function SigninPage() {
                 Router.back();
             }
         }
-    }
+    };
+    const loadingCard = (
+        <div className={styles["loading-card"]}>
+            <CircularProgress color="inherit" size={40}/>
+        </div>
+    )
     const formContent = !email ? (
-        <form onSubmit={getCode} id="email-form" className={styles["form"]}>
-            {loading ? <CircularProgress color="inherit" size={40}/> : (
-                <>
-                    <div className={styles["input-container"]}>
-                        <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">E-Mail</Body>
-                        <Input type="email" name="email"/>
-                    </div>
-                    <Button>Continuar</Button>
-                </>
-            )}
+        <form onSubmit={getCode} id="email-form" className={`${styles["form"]}`}>
+            <>
+                <div className={`${styles["input-container"]} ${loading ? styles["loading"] : ""}`}>
+                    <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">E-Mail</Body>
+                    <Input type="email" name="email"/>
+                </div>
+                <Button className={loading ? styles["loading"] : ""}>Continuar</Button>
+                {loading ? loadingCard : null}
+            </>
         </form>
     ) : (
         <form onSubmit={submitCode} id="email-form" className={styles["form"]}>
-            {loading ? <CircularProgress color="inherit" size={40}/> : (
-                <>
-                    <div className={styles["input-container"]}>
-                        <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Código</Body>
-                        <Input type="number" name="code" talign="center"/>
-                    </div>
-                    {!error ? <Body size="s" color="grey" fontWeight="normal">Te enviamos un código a tu E-Mail</Body> : <Body size="s" color="#e44545" fontWeight="normal">El código es incorrecto</Body>}
-                    <Button>Ingresar</Button>
-                </>
-            )}
+            <>
+                <div className={`${styles["input-container"]} ${loading ? styles["loading"] : ""}`}>
+                    <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Código</Body>
+                    <Input type="number" name="code" talign="center"/>
+                </div>
+                {!error ? <Body size="s" color="grey" fontWeight="normal" className={loading ? styles["loading"] : ""}>Te enviamos un código a tu E-Mail</Body> : <Body size="s" color="#e44545" fontWeight="normal" className={loading ? styles["loading"] : ""}>El código es incorrecto</Body>}
+                <Button className={loading ? styles["loading"] : ""}>Ingresar</Button>
+                {loading ? loadingCard : null}
+            </>
         </form>
     );
   return (
