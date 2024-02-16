@@ -52,7 +52,7 @@ export default function CartPage() {
   );
   return (
     <LayoutComp user={user ? user : false}>
-        <main className={styles["cart-page"]}>
+        <section className={styles["cart-page"]}>
           {userCart?.length == 0 ? emptyCart : (
             <div className={styles["cart-products-container"]}>
               <Label style={{textAlign: "center"}}>Tu carrito de compras</Label>
@@ -62,8 +62,8 @@ export default function CartPage() {
               })}
             </div>
           )}
-        </main>
         {userCart?.length !== 0 ? total : null}
+        </section>
     </LayoutComp>
   )
 }

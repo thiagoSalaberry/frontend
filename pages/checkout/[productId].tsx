@@ -59,12 +59,12 @@ export default function CheckoutPage() {
     <LayoutComp user={user ? user : false}>
       <div className={styles["checkout-page"]}>
         {displayContent == "shipping" ? (
-          <>
+          <div className={styles["cards-container"]}>
             <Label>Elegí la forma de entrega</Label>
             <DeliveryCard name="option" delivery="delivery" address={user?.userData?.address} department={user?.userData?.department}/>
             <DeliveryCard name="option" delivery="pickup"/>
             <Button onClick={handleClick}>Continuar</Button>
-          </>
+          </div>
         ) :  displayContent == "testData" && !paid ? (
           <div className={styles["test-data-card"]}>
             <Label>Utilizá los siguiente datos para realizar el pago</Label>

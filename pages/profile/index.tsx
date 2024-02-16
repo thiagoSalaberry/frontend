@@ -1,13 +1,15 @@
 import { LayoutComp } from "@/components/layout"
 import { Title, Body } from "@/ui/text"
-import { Button } from "@/ui/buttons"
+import { Button, BackButton } from "@/ui/buttons"
 import { Input } from "@/ui/textfields"
 import { useMe } from "@/lib/hooks"
 import styles from "./profile.module.css"
 import { updateUserData } from "@/lib/api-calls"
 import Router from "next/router"
+import { FormEvent, useRef } from "react"
 export default function ProfilePage() {
     const user = useMe();
+    const formRef = useRef(null);
     async function handleForm(e:any) {
         e.preventDefault();
         await updateUserData({
@@ -26,41 +28,48 @@ export default function ProfilePage() {
         });
         Router.reload();
     };
+    function handleCancel(e:FormEvent) {
+        e.preventDefault();
+        if(formRef.current) {
+            (formRef.current as any).reset();
+        }
+    }
     const formContent = (
-        <form onSubmit={handleForm} id="email-form" className={styles["form"]}>
-            <div className={styles["input-container"]}>
+        <form ref={formRef} onSubmit={handleForm} id="email-form" className={styles["form"]}>
+            <div id="name" className={`${styles["input-container"]} ${styles["name"]}`}>
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Nombre</Body>
                 <Input type="text" name="name" placeholder={user?.userData?.name ? user.userData.name : "Tu nombre"}/>
             </div>
-            <div className={styles["input-container"]}>
+            <div id="last_name" className={`${styles["input-container"]} ${styles["last_name"]}`}>
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Apellido</Body>
                 <Input type="text" name="last_name" placeholder={user?.userData?.last_name ? user.userData.last_name : "Tu apellido"}/>
             </div>
-            <div className={styles["input-container"]}>
+            <div id="phone" className={`${styles["input-container"]} ${styles["phone"]}`}>
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Celular</Body>
                 <Input type="number" name="phone" placeholder={user?.userData?.phone ? user.userData.phone : "Tu celular"}/>
             </div>
-            <div className={styles["input-container"]}>
+            <div id="street_name" className={`${styles["input-container"]} ${styles["street_name"]}`}>
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Calle</Body>
                 <Input type="text" name="street_name" placeholder={user?.userData?.address?.street_name ? user.userData.address.street_name : "Tu calle"}/>
             </div>
-            <div className={styles["input-container"]}>
+            <div id="street_number" className={`${styles["input-container"]} ${styles["street_number"]}`}>
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Altura</Body>
                 <Input type="text" name="street_number" placeholder={user?.userData?.address?.street_number ? user.userData.address.street_number : "La altura de tu casa"}/>
             </div>
-            <div className={styles["input-container"]}>
+            <div id="department" className={`${styles["input-container"]} ${styles["department"]}`}>
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Piso y departamento</Body>
                 <Input type="text" name="department" placeholder={user?.userData?.address?.department ? user.userData.address.department : "Tu piso y departamento"}/>
             </div>
-            <div className={styles["input-container"]}>
+            <div id="city" className={`${styles["input-container"]} ${styles["city"]}`}>
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Ciudad</Body>
                 <Input type="text" name="city" placeholder={user?.userData?.address?.city ? user.userData.address.city : "Tu ciudad"}/>
             </div>
-            <div className={styles["input-container"]}>
+            <div id="zip_code" className={`${styles["input-container"]} ${styles["zip_code"]}`}>
                 <Body style={{marginLeft: 20}} size="s" color="black" fontWeight="bold">Código postal</Body>
                 <Input type="number" name="zip_code" placeholder={user?.userData?.address?.zip_code ? user.userData.address.zip_code : "Tu código postal"}/>
             </div>
-            <Button>Cargar datos</Button>
+            <BackButton onClick={handleCancel}>Cancelar</BackButton>
+            <Button type="submit">Cargar datos</Button>
         </form>
     );
   return (

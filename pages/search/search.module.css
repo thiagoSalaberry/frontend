@@ -16,6 +16,9 @@
     gap: 15px;
 }
 @media (min-width: 1280px) {
+    .search-page {
+        padding: 100px 150px;
+    }
     .cards-container {
         flex-direction: row;
         flex-wrap: wrap;

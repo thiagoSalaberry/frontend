@@ -16,23 +16,6 @@ export default function CartPage() {
         <Button onClick={()=>Router.push("/search?q=&offset=0&limit=10")}>Descubrir productos</Button>
     </div>
   )
-  const total = (
-    <div className={styles["cart-total"]}>
-        <div className={styles["cart-total-products"]}>
-            <Body size="m">Productos ({userBookmarks?.length})</Body>
-            <Body size="m">${(userBookmarks?.map(prod => prod.unit_price).reduce((acc, cv) => acc + cv, 0))?.toLocaleString()}</Body>
-        </div>
-        <div className={styles["cart-total-products"]}>
-            <Body size="m">Envío</Body>
-            <Body size="m" color="green">Gratis</Body>
-        </div>
-        <div className={styles["cart-total-products"]}>
-            <Body size="l" fontWeight="bold">Total</Body>
-            <Body size="l" fontWeight="bold">${(userBookmarks?.map(prod => prod.unit_price).reduce((acc, cv) => acc + cv, 0))?.toLocaleString()}</Body>
-        </div>
-        <Button onClick={()=>{}}>Continuar Compra</Button>
-    </div>
-  );
   return (
     <LayoutComp user={user ? user : false}>
         <main className={styles["cart-page"]}>

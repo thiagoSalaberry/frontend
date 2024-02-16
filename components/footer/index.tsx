@@ -45,7 +45,7 @@ export function FooterComp(props:FooterProp) {
                     <Body className={styles["redes-link"]} color="white" size="m"><TwitterXIcon size="24"/> @thiagosalaberry</Body>
                 </Link>
             </div>
-            <Body color="white" size="m">© 2024 Teoxys</Body>
+            <Body color="white" size="m" className={styles["c"]}>© 2024 Teoxys</Body>
         </footer>
     )
 }
